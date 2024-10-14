@@ -1,0 +1,116 @@
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3, h4, p {
+  text-align: left;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+li {
+  font-size: 1rem;
+}
+
+button {
+  background-color: #5e9852;
+  color: white;
+  margin: 1rem;
+  font-size: 0.8rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 5%;
+}
+
+button:hover {
+  background-color: #14af5d;
+  cursor: pointer; 
+}
+
+.hike-section {
+  width: 40%;
+  height: 25rem;
+  background: #82d576;
+  margin: 1rem;
+  padding: 0 1rem;
+  border: 1px solid gray;
+  border-radius: 2%;
+  margin-left: 1rem;
+  overflow: scroll;
+}
+
+/* Home Page */
+#home {
+  background: #82d576;
+  width: 40%;
+  margin: 1rem auto;
+  padding: 1rem 2rem;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+
+#home ul {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+#home li {
+  padding: 0.2rem;
+}
+
+/* Hike */
+.hike {
+  text-align: left;
+  background-color:#d9d9d9;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.hike .hike-button {
+  margin: 0.1rem;
+  font-size: 0.6rem;
+  padding: 0.3rem;
+  width: 4rem;
+  float:right;
+}
+
+.hike .history {
+  visibility:collapse;
+}
+
+.hike p, .hike h4, .hike h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.hike h4 {
+  font-size: 0.8rem;
+}
+
+.hike a {
+  font-size: 0.8rem;
+}
+
+.hike p {
+  font-size: 0.8rem;
+}

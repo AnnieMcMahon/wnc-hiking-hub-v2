@@ -1,0 +1,49 @@
+#post-hike .content {
+  display: flex;
+  flex-direction: row;
+}
+
+#post-hike .form-area {
+  width: 60%;
+  text-align: left;
+  height: 25rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  line-height: 1.5rem;
+  overflow: scroll;
+  background-color: rgb(238, 240, 233);
+}
+
+#post-hike input[name="title"] {
+  width: 25rem;
+}
+
+#post-hike textarea {
+  width: 30rem;
+  height: 5rem;
+}
+
+#post-hike input[list="area"] {
+  width: 15rem;
+}
+
+#post-hike input[type="checkbox"] {
+  margin-left: 1rem;
+}
+
+#post-hike input {
+  font-size: 0.8rem;
+}
+
+#post-hike option {
+  font-size: 0.8rem;
+}
+
+#post-hike label {
+  font-size: 0.9rem;
+}
+
+#post-hike h4 {
+  margin-bottom: 0.3rem;
+}
