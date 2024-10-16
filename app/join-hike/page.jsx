@@ -5,7 +5,7 @@ import './join-hike.css';
 function JoinHike() {
   return (
     <div id="join-hike">
-      <h2>Join a Hike</h2>
+      <h3>Select a hike you would like to join:</h3>
       <div className="hike-section">
         <Hike hikeType="available" hikeInfo={hikes[0]} />
         <Hike hikeType="available" hikeInfo={hikes[1]} />

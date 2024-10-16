@@ -8,12 +8,12 @@ function Bio() {
       <div className="bio-section">
         <div className="bio-header-section">
           <img className="avatar" src='/avatar1.png' alt="avatar" />
-          <h2>Annie McMahon</h2>
+          <h1>Annie McMahon</h1>
           <button>Edit Bio</button>
         </div>
         <div className="bio-text-section">
-          <h3>About Me</h3>
-          <div className="bio-text">
+          <h2>About Me</h2>
+          <div id="bio-text" className="text-box">
             <p>
               Bio text goes here ... Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Rem reprehenderit assumenda quibusdam iste eos
@@ -22,29 +22,17 @@ function Bio() {
               quos, laboriosam tempora qui tempore quo velit! Libero quod
               eligendi at eum.
             </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-              magnam asperiores magni amet quaerat reiciendis architecto
-              pariatur quod omnis suscipit.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit
-              quia minus adipisci, veniam, praesentium fuga laudantium modi
-              tempore ullam nobis excepturi itaque dignissimos ducimus!
-              Temporibus veniam molestiae expedita repudiandae iure?
-            </p>
           </div>
         </div>
       </div>
 
       <div className="hike-section">
-        <h3>My Hikes</h3>
-        <h4>Coming Up</h4>
+        <h2>My Hikes - Coming Up</h2>
         <div>
           <Hike hikeType="created" hikeInfo={hikes[0]}/>
           <Hike hikeType="joined" hikeInfo={hikes[1]}/>
         </div>
-        <h4>History</h4>
+        <h2>My Hikes - History</h2>
         <div>
           <Hike hikeType="history" hikeInfo={hikes[2]}/>
           <Hike hikeType="history" hikeInfo={hikes[3]}/>

@@ -2,37 +2,96 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  background-image: url("/background.jpeg");
 }
 
+/**** Fonts ****/
+/* Home page title, Bio name */
 h1 {
-  font-size: 2rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
 }
 
+/* Each page's titles */
 h2 {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  text-align: left;
+  font-weight: bold;
 }
 
-h3, h4, p {
+/* Join Hike title */
+h3 {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin: 0.5rem;
+}
+
+/* Hike sections */
+h4 {
+  font-size: 0.8rem;
+  font-weight: bold;
   text-align: left;
 }
 
-h4 {
-  font-size: 1rem;
+h5 {
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: bold;
 }
 
-h5 {
-  font-style: italic;
+/* Bio text */
+p {
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+/* Home page last sentence */
+#home p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Hike section */
+.hike p {
   font-size: 0.8rem;
 }
 
-p {
+/* Bio form */
+form {
+  font-size: 0.8rem;
+}
+
+label {
   font-size: 0.9rem;
 }
 
-li {
-  font-size: 1rem;
+input, select, textarea {
+  font-size: inherit;
+  font-family: inherit;
 }
 
+/* Home page instructions */
+li {
+  font-size: 1rem;
+  padding: 0.2rem;
+  text-align: left;
+}
+
+/* Hike section links */
+a {
+  font-size: 0.8rem;
+}
+
+/*Hike sections*/
+.hike p, .hike h4, .hike h5 {
+  margin: 0;
+  padding: 0;
+}
+
+
+/**** Buttons ****/
 button {
   background-color: #5e9852;
   color: white;
@@ -47,46 +106,8 @@ button:hover {
   cursor: pointer; 
 }
 
-.hike-section {
-  width: 40%;
-  height: 25rem;
-  background: #82d576;
-  margin: 1rem;
-  padding: 0 1rem;
-  border: 1px solid gray;
-  border-radius: 2%;
-  margin-left: 1rem;
-  overflow: scroll;
-}
-
-/* Home Page */
-#home {
-  background: #82d576;
-  width: 40%;
-  margin: 1rem auto;
-  padding: 1rem 2rem;
-  border: 1px solid green;
-  border-radius: 5px;
-}
-
-#home ul {
-  text-align: left;
-  font-size: 1.2rem;
-}
-
-#home li {
-  padding: 0.2rem;
-}
-
-/* Hike */
-.hike {
-  text-align: left;
-  background-color:#d9d9d9;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-}
-
-.hike .hike-button {
+/*Hike section buttons */
+.hike-button {
   margin: 0.1rem;
   font-size: 0.6rem;
   padding: 0.3rem;
@@ -94,23 +115,55 @@ button:hover {
   float:right;
 }
 
+/* Bio page form section buttons */
+.form-button {
+  margin: 0.1rem;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  width: 6rem;
+}
+
+/* Button hidden for history items on Bio page */
 .hike .history {
   visibility:collapse;
 }
 
-.hike p, .hike h4, .hike h5 {
-  margin: 0;
-  padding: 0;
+/**** General sections ****/
+
+/* Hike Sections on Bio, Join Hike and Post Hike pages */
+.hike-section {
+  width: 40%;
+  height: 28rem;
+  background: #82a87b;
+  margin: 0.5rem;
+  padding: 0 1rem;
+  border: 1px solid #41553e;
+  border-radius: 5px;
+  margin-left: 1rem;
+  overflow: scroll;
 }
 
-.hike h4 {
-  font-size: 0.8rem;
+/* Home page, Bio, Post Hike */
+.text-box {
+  background: whitesmoke;
+  opacity: 75%;
+  border: 1px solid green;
+  border-radius: 5px;
 }
 
-.hike a {
-  font-size: 0.8rem;
+/**** Home page and components ****/
+
+/* Home Page */
+#home {
+  width: 40%;
+  margin: 1rem auto;
+  padding: 1rem 2rem;
 }
 
-.hike p {
-  font-size: 0.8rem;
+/* Hike component */
+.hike {
+  text-align: left;
+  background-color:#d9d9d9;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
 }

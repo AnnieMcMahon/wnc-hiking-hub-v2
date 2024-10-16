@@ -6,9 +6,8 @@ function PostHike() {
   return (
     <div id="post-hike">
       <div className="content">
-        <div className="form-area">
-        <h2>Post a Hike</h2>
-          <h4>1. Search for a hike</h4>
+        <div id="form-area" className="text-box">
+          <h2>1. Search for a hike</h2>
           <form>
             <label for="area">Area: </label>
             <input list="area"/>
@@ -29,8 +28,7 @@ function PostHike() {
               <option value="medium">From 3 to 6 miles</option>
               <option value="long">Longer than 6 miles</option>
             </select>
-            <br />
-            <label for="difficulty">Difficulty: </label>
+            <label for="difficulty">  Difficulty: </label>
             <select name="difficulty" id="difficulty">
               <option value="easy">Easy</option>
               <option value="moderate">Moderate</option>
@@ -39,29 +37,28 @@ function PostHike() {
             <br />
             <label>Keywords: </label>
             <input type="checkbox" name="waterfall" value="waterfall" />
-            Waterfall
+            <span>Waterfall</span>
             <input type="checkbox" name="view" value="view" />
-            View
+            <span>View</span>
             <input type="checkbox" name="paved" value="paved" />
-            Paved
+            <span>Paved</span>
             <input type="checkbox" name="dogs" value="dogs" />
-            Dogs
+            <span>Dogs</span>
             <br />
-            <button>Search</button>
+            <button className="form-button">Search</button>
           </form>
-          <h4>2. Select a hike from the right column</h4>
+          <h2>2. Select a hike from the right column</h2>
 
-          <h4>3. Fill out the form information</h4>
+          <h2>3. Fill out the form information</h2>
           <form>
             <label for="title">Title: </label>
             <input type="text" name="title" id="title" />
             <br />
-            <label for="time">Time: </label>
-            <input type="text" name="time" id="time" />
-            <label for="date"> Date: </label>
+            <label for="date">Date: </label>
             <input type="text" name="date" id="date" />
+            <label for="time"> Time: </label>
+            <input type="text" name="time" id="time" />
             <br />
-
             <label for="comments">Comments: </label>
             <br/>
             <textarea
@@ -69,13 +66,11 @@ function PostHike() {
               name="comments"
               id="comments"
             />
-            <br />
-
-            <button type="submit">Submit Form</button>
+            <button type="submit" className="form-button">Submit Form</button>
           </form>
         </div>
         <div className="hike-section">
-          <h3>Hike Search Results</h3>
+          <h2>Hike Search Results</h2>
           <AllTrailsPost hikeInfo={allTrails[0]} />
           <AllTrailsPost hikeInfo={allTrails[1]} />
           <AllTrailsPost hikeInfo={allTrails[2]} />

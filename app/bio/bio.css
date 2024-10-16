@@ -23,12 +23,11 @@
 
 #bio .bio-text-section {
   padding: 0 2rem;
-  text-align: left;
 }
 
-#bio .bio-text {
-  background-color: #d9d9d9;
+#bio #bio-text {
   padding: 0.5rem 1rem;
+  min-height: 10rem;
 }
 
 #bio .hike-section {
