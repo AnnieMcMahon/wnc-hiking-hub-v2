@@ -49,7 +49,7 @@ function PostHike() {
           </form>
           <h2>2. Select a hike from the right column</h2>
 
-          <h2>3. Fill out the form information</h2>
+          <h2>3. Fill out the hike information</h2>
           <form>
             <label for="title">Title: </label>
             <input type="text" name="title" id="title" />
@@ -66,6 +66,7 @@ function PostHike() {
               name="comments"
               id="comments"
             />
+            <br />
             <button type="submit" className="form-button">Submit Form</button>
           </form>
         </div>
