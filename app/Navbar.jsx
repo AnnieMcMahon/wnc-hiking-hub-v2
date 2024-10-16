@@ -7,15 +7,13 @@ export default function Navbar() {
   const pathname = usePathname()
   return (
     <div id="navbar">
-        <div className={`${pathname === '/' ? 'active' : ''}`} id="title">
+        <div className={`${pathname === '/' ? 'active' : 'inactive'}`} id="title">
         <h2><a href="/">WNC Hiking Hub</a></h2>
         </div>
         <ul className="links">
-          <li className={`${pathname === '/bio' ? 'active' : ''}`}><a href="/bio">Bio</a></li>
-          <li className={`${pathname === '/post-hike' ? 'active' : ''}`}><a href="/post-hike">Post a Hike</a></li>
-          <li className={`${pathname === '/join-hike' ? 'active' : ''}`}><a href="/join-hike">Join a Hike</a></li>
-          <li>Settings</li>
-          <li>Messages</li>
+          <li className={`${pathname === '/bio' ? 'active' : 'inactive'}`}><a href="/bio">Bio</a></li>
+          <li className={`${pathname === '/post-hike' ? 'active' : 'inactive'}`}><a href="/post-hike">Post a Hike</a></li>
+          <li className={`${pathname === '/join-hike' ? 'active' : 'inactive'}`}><a href="/join-hike">Join a Hike</a></li>
         </ul>
         <button>Log In</button>
     </div>
