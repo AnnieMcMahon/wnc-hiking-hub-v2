@@ -10,15 +10,16 @@ function PostHike() {
           <h2>1. Search for a hike</h2>
           <form>
             <label for="area">Area: </label>
-            <input list="area"/>
+            <input list="area" placeholder="Anywhere in WNC"/>
               <datalist name="area" id="area">
                 <option value="Anywhere in WNC"/>
-                <option value="Asheville Area"/>
-                <option value="DuPont Forest"/>
-                <option value="Pisgah Forest"/>
+                <option value="DuPont State Recreational Forest"/>
+                <option value="Pisgah National Forest"/>
+                <option value="North Carolina Arboretum"/>
                 <option value="Nantahala Forest"/>
                 <option value="Appalachian Trail"/>
                 <option value="Mountains-to-Sea Trail"/>
+                <option value="Asheville Area"/>
               </datalist>
             <br />
             <label for="length">Length: </label>
@@ -59,6 +60,9 @@ function PostHike() {
             <label for="time"> Time: </label>
             <input type="text" name="time" id="time" />
             <br />
+            <label for="location"> Location: </label>
+            <input type="text" name="location" id="location" />
+            <br />            
             <label for="comments">Comments: </label>
             <br/>
             <textarea
@@ -72,11 +76,9 @@ function PostHike() {
         </div>
         <div className="hike-section">
           <h2>Hike Search Results</h2>
-          <AllTrailsPost hikeInfo={allTrails[0]} />
-          <AllTrailsPost hikeInfo={allTrails[1]} />
-          <AllTrailsPost hikeInfo={allTrails[2]} />
-          <AllTrailsPost hikeInfo={allTrails[3]} />
-          <AllTrailsPost hikeInfo={allTrails[4]} />
+          {allTrails.map((trail) => (
+        <AllTrailsPost hikeInfo={trail} />
+      ))}
         </div>
       </div>
     </div>

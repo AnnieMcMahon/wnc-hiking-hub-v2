@@ -19,6 +19,10 @@
   width: 20rem;
 }
 
+#post-hike input[name="location"] {
+  width: 20rem;
+}
+
 #post-hike textarea {
   width: 25rem;
   height: 5rem;
@@ -42,6 +46,10 @@
   }
 
   #post-hike input[name="title"] {
+    width: 10rem;
+  }
+
+  #post-hike input[name="location"] {
     width: 10rem;
   }
 
