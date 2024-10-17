@@ -49,3 +49,21 @@
   cursor: pointer; 
 }
 
+/* Smaller screens */
+@media only screen and (max-width: 768px) {
+  #navbar {
+      height: 2rem;
+    }
+    
+  #navbar #title {
+      height: 2rem;
+      padding: 0 0.2rem;
+      font-size: 0.8rem;
+    }
+  
+    #navbar .active, #navbar .inactive {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      min-width: 0;
+    }
+  }

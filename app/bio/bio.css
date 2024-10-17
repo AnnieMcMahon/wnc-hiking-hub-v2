@@ -33,3 +33,23 @@
 #bio .hike-section {
   width: 40%;
 }
+
+@media only screen and (max-width: 768px) {
+  #bio .bio-header-section {
+    margin: 0.5rem;
+  }
+
+  #bio .avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  #bio .bio-text-section {
+    padding: 0 0.3rem;
+  }
+  
+  #bio #bio-text {
+    padding: 0 0.3rem;
+    min-height: 14rem;
+  }
+}
