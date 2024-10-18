@@ -123,15 +123,6 @@ button:hover {
   float: right;
 }
 
-/*Login page buttons */
-.enter-button {
-  margin: 0.1rem;
-  font-size: 0.6rem;
-  padding: 0.2rem;
-  width: 4rem;
-  float: right;
-}
-
 /* Post a Hike page form section buttons */
 .form-button {
   margin: 0.1rem;
