@@ -13,7 +13,7 @@ export default function Navbar() {
           <Link className={`${pathname === '/post-hike' ? 'active' : 'inactive'}`} href="/post-hike">Post a Hike</Link>
           <Link className={`${pathname === '/join-hike' ? 'active' : 'inactive'}`} href="/join-hike">Join a Hike</Link>
         </div>
-        <button>Log In</button>
+        <button><Link className="button-link" href="/login">Log In</Link></button>
     </div>
   );
 }

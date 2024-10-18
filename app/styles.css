@@ -109,8 +109,22 @@ button:hover {
   cursor: pointer;
 }
 
+.button-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 /*Hike section buttons */
 .hike-button {
+  margin: 0.1rem;
+  font-size: 0.6rem;
+  padding: 0.2rem;
+  width: 4rem;
+  float: right;
+}
+
+/*Login page buttons */
+.enter-button {
   margin: 0.1rem;
   font-size: 0.6rem;
   padding: 0.2rem;

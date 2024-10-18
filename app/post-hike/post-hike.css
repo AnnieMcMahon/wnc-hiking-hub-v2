@@ -19,21 +19,21 @@
   width: 20rem;
 }
 
-#post-hike input[name="location"] {
-  width: 20rem;
-}
-
-#post-hike textarea {
-  width: 25rem;
-  height: 5rem;
-}
-
 #post-hike input[list="area"] {
   width: 15rem;
 }
 
 #post-hike input[type="checkbox"] {
   margin-left: 1rem;
+}
+
+#post-hike input[name="location"] {
+  width: 20rem;
+}
+
+#post-hike textarea {
+  width: 25rem;
+  height: 4rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -49,6 +49,14 @@
     width: 10rem;
   }
 
+  #post-hike input[list="area"] {
+    width: 10rem;
+  }
+
+  #post-hike input[type="checkbox"] {
+    margin-left: 0.5rem;
+  }
+
   #post-hike input[name="location"] {
     width: 10rem;
   }
@@ -56,13 +64,5 @@
   #post-hike textarea {
     width: 15rem;
     height: 5rem;
-  }
-
-  #post-hike input[list="area"] {
-    width: 10rem;
-  }
-
-  #post-hike input[type="checkbox"] {
-    margin-left: 0.5rem;
   }
 }

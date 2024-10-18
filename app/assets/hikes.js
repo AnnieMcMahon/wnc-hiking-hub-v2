@@ -1,4 +1,4 @@
-export default [
+const hikes = [
   {
     id: 0,
     creator: "Annie McMahon",
@@ -60,3 +60,5 @@ export default [
     comments: "Bring  your lunch, plenty of water, and your dog, if you have one. See you on the trail!"
   },
 ];
+
+export default hikes;

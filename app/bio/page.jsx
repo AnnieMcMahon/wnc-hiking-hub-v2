@@ -1,3 +1,6 @@
+'use client';
+import Image from "next/image";
+
 import Hike from "../components/Hike";
 import hikes from "../assets/hikes";
 import './bio.css';
@@ -7,7 +10,7 @@ function Bio() {
     <div id="bio">
       <div className="bio-section">
         <div className="bio-header-section">
-          <img className="avatar" src='/avatar1.png' alt="avatar" />
+          <Image className="avatar" src='/avatar1.png' alt="avatar" width="15" height="15"/>
           <h1>Annie McMahon</h1>
           <button>Edit Bio</button>
         </div>

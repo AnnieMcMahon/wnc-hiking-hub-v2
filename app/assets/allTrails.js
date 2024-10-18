@@ -1,4 +1,4 @@
-export default [
+const allTrails = [
   {
     id: 0,
     name: 'Triple Falls Trail',
@@ -60,3 +60,5 @@ export default [
     link: 'https://www.alltrails.com/trail/us/north-carolina/lake-powhatan-loop-via-bent-creek-trail'
   },
 ];
+
+export default allTrails;
