@@ -1,4 +1,6 @@
-const hikes = [
+const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
+  ? JSON.parse(localStorage.getItem('hikes'))
+  : [
   {
     id: 0,
     creator: "Annie McMahon",
