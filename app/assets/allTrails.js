@@ -51,13 +51,13 @@ const allTrails = [
   },
   {
     id: 5,
-    name: 'Lake Powhatan via Bent Creek Trail',
-    area: 'North Carolina Arboretum',
-    difficulty: 'Easy',
-    length: '5.5 mi',
-    elevation: '196 ft',
+    name: 'Looking Glass Rock Trail',
+    area: 'Pisgah National Forest',
+    difficulty: 'Moderate',
+    length: '6.1 mi',
+    elevation: '1683 ft',
     type: 'Out & back',
-    link: 'https://www.alltrails.com/trail/us/north-carolina/lake-powhatan-loop-via-bent-creek-trail'
+    link: 'https://www.alltrails.com/trail/us/north-carolina/looking-glass-rock-trail'
   },
 ];
 

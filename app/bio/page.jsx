@@ -1,16 +1,11 @@
 'use client';
 import Image from "next/image";
 import Hike from "../components/Hike";
-import hikes from "../assets/hikes";
 import './bio.css';
 import { useGlobal } from '../context/GlobalContext';
 
 function Bio() {
-  const { currentUser } = useGlobal();
-
-  if (!currentUser) {
-    return <p>Loading...</p>; // Handle the case where the user is not yet loaded
-  }
+  const { currentUser, hikes } = useGlobal();
 
   return (
     <div id="bio">
@@ -31,14 +26,14 @@ function Bio() {
       <div className="hike-section">
         <h2>My Hikes - Coming Up</h2>
         <div>
-          <Hike hikeType="created" hikeInfo={hikes[0]} />
-          <Hike hikeType="joined" hikeInfo={hikes[1]} />
+          {/* <Hike hikeType="created" hikeInfo={hikes[0]} />
+          <Hike hikeType="joined" hikeInfo={hikes[1]} /> */}
         </div>
         <h2>My Hikes - History</h2>
         <div>
-          <Hike hikeType="history" hikeInfo={hikes[2]} />
+          {/* <Hike hikeType="history" hikeInfo={hikes[2]} />
           <Hike hikeType="history" hikeInfo={hikes[3]} />
-          <Hike hikeType="history" hikeInfo={hikes[4]} />
+          <Hike hikeType="history" hikeInfo={hikes[4]} /> */}
         </div>
       </div>
     </div>

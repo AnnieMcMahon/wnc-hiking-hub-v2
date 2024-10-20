@@ -1,6 +1,6 @@
 "use client";
 import { useGlobal } from "../context/GlobalContext";
-import allTrails from "../assets/allTrails";
+import allTrails from "@/app/assets/allTrails";
 
 function Hike({hikeType, hikeInfo}) {
   const { appUsers } = useGlobal();

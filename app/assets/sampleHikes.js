@@ -1,9 +1,7 @@
-const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
-  ? JSON.parse(localStorage.getItem('hikes'))
-  : [
+const sampleHikes = [
   {
     id: 0,
-    creator: 1,
+    creator: 0,
     allTrailsId: 0,
     title: "Mid-week Morning Hike - Triple Falls",
     date: "10/26/2026",
@@ -13,7 +11,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 1,
-    creator: 2,
+    creator: 0,
     allTrailsId: 1,
     title: "Afternoon Hike - Hard Times Loop",
     date: "11/01/2026",
@@ -23,7 +21,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 2,
-    creator: 3,
+    creator: 0,
     allTrailsId: 5,
     title: "Lake Powhatan via Bent Creek Trail",
     date: "9/14/2026",
@@ -33,7 +31,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 3,
-    creator: 2,
+    creator: 0,
     allTrailsId: 3,
     title: "Owl Ridge Trail - laidback hike for everyone",
     date: "9/21/2026",
@@ -43,7 +41,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 4,
-    creator: 2,
+    creator: 0,
     allTrailsId: 4,
     title: "Fletcher Loop Fitness Hike",
     date: "9/27/2026",
@@ -53,7 +51,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 5,
-    creator: 1,
+    creator: 0,
     allTrailsId: 1,
     title: "Hard Times Loop",
     date: "9/27/2026",
@@ -63,4 +61,4 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
 ];
 
-export default hikes;
+export default sampleHikes;

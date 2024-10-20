@@ -1,9 +1,14 @@
+"use client";
+
 import Hike from "@/app/components/Hike";
-import hikes from "../assets/hikes";
+import { useGlobal } from '../context/GlobalContext';
+
 import './join-hike.css';
 
 function JoinHike() {
-  console.log(hikes);
+  const { hikes } = useGlobal();
+  console.log("Hikes from context:", hikes);
+  console.log("First hike from context:", hikes[0]);
   return (
     <div id="join-hike">
       <h3>Select a hike you would like to join:</h3>

@@ -1,6 +1,6 @@
 "use client";
 import "./login.css";
-import appUsers from "../assets/appUsers";
+import appUsers from "../assets/sampleAppUsers";
 import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
 
@@ -17,7 +17,6 @@ function Login() {
       const userInfo = appUsers.find((user) => user.email == userEmail);
       if (userInfo) {
         if (userInfo.password == userPassword) {
-          alert("Login Successful!")
           setCurrentUser(userInfo);
           localStorage.setItem('currentUser', JSON.stringify(userInfo));
           router.push("/bio");
