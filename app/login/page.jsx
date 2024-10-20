@@ -2,11 +2,11 @@
 import "./login.css";
 import appUsers from "../assets/appUsers";
 import { useRouter } from "next/navigation";
-import { useUser } from "../context/UserContext";
+import { useGlobal } from "../context/GlobalContext";
 
 function Login() {
   const router = useRouter();
-  const { setCurrentUser } = useUser();
+  const { setCurrentUser } = useGlobal();
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -3,10 +3,10 @@ import Image from "next/image";
 import Hike from "../components/Hike";
 import hikes from "../assets/hikes";
 import './bio.css';
-import { useUser } from '../context/UserContext';
+import { useGlobal } from '../context/GlobalContext';
 
 function Bio() {
-  const { currentUser } = useUser();
+  const { currentUser } = useGlobal();
 
   if (!currentUser) {
     return <p>Loading...</p>; // Handle the case where the user is not yet loaded

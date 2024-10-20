@@ -3,7 +3,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   : [
   {
     id: 0,
-    creator: "Annie McMahon",
+    creator: 1,
     allTrailsId: 0,
     title: "Mid-week Morning Hike - Triple Falls",
     date: "10/26/2026",
@@ -13,7 +13,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 1,
-    creator: "Kat",
+    creator: 2,
     allTrailsId: 1,
     title: "Afternoon Hike - Hard Times Loop",
     date: "11/01/2026",
@@ -23,7 +23,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 2,
-    creator: "Tom Chlanda",
+    creator: 3,
     allTrailsId: 5,
     title: "Lake Powhatan via Bent Creek Trail",
     date: "9/14/2026",
@@ -33,7 +33,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 3,
-    creator: "Trail Bum",
+    creator: 2,
     allTrailsId: 3,
     title: "Owl Ridge Trail - laidback hike for everyone",
     date: "9/21/2026",
@@ -43,7 +43,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 4,
-    creator: "Cathy B.",
+    creator: 2,
     allTrailsId: 4,
     title: "Fletcher Loop Fitness Hike",
     date: "9/27/2026",
@@ -53,7 +53,7 @@ const hikes = typeof window !== 'undefined' && localStorage.getItem('hikes')
   },
   {
     id: 5,
-    creator: "Annie McMahon",
+    creator: 1,
     allTrailsId: 1,
     title: "Hard Times Loop",
     date: "9/27/2026",

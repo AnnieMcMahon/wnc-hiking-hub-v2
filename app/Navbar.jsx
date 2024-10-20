@@ -1,15 +1,14 @@
 'use client';
 
-import { useUser } from './context/UserContext';
+import { useGlobal } from './context/GlobalContext';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import './Navbar.css';
 
 export default function Navbar() {
-  const { currentUser } = useUser();
+  const { currentUser } = useGlobal();
   const pathname = usePathname();
 
-  // If currentUser is not available yet, you can conditionally render content or fallback to something else
   return (
     <div id="navbar">
       <Link className={`${pathname === '/' ? 'active' : 'inactive'}`} id="title" href="/">WNC Hiking Hub</Link>

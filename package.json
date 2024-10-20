@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@jswork/next-local-storage": "^1.0.10",
     "@types/react": "^18.3.11",
     "next": "14.2.15",
     "react": "^18",

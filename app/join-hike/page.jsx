@@ -1,8 +1,9 @@
 import Hike from "@/app/components/Hike";
-import hikes from "@/app/assets/hikes";
+import hikes from "../assets/hikes";
 import './join-hike.css';
 
 function JoinHike() {
+  console.log(hikes);
   return (
     <div id="join-hike">
       <h3>Select a hike you would like to join:</h3>
