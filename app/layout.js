@@ -1,5 +1,6 @@
 import './styles.css';
 import Navbar from './Navbar';
+import { UserProvider } from './context/UserContext';
 
 export const metadata = {
   title: "WNC Hiking Hub",
@@ -10,8 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <UserProvider>
+          <Navbar />
+          {children}
+        </UserProvider>
       </body>
     </html>
   );

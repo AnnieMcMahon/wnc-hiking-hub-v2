@@ -1,28 +1,59 @@
 "use client";
 import "./login.css";
-import appUsers from '../assets/appUsers';
+import appUsers from "../assets/appUsers";
+import { useRouter } from "next/navigation";
+import { useUser } from "../context/UserContext";
 
 function Login() {
+  const router = useRouter();
+  const { setCurrentUser } = useUser();
+
   function handleSubmit(e) {
     e.preventDefault();
     const userEmail = e.target.userEmail.value;
     const userPassword = e.target.userPassword.value;
     let userStatus = "";
     if (userEmail.length > 0 && userPassword.length > 0) {
-      const userInfo = appUsers.find(user => user.email == userEmail);
+      const userInfo = appUsers.find((user) => user.email == userEmail);
       if (userInfo) {
         if (userInfo.password == userPassword) {
-          userStatus = "validated";
+          alert("Login Successful!")
+          setCurrentUser(userInfo);
+          localStorage.setItem('currentUser', JSON.stringify(userInfo));
+          router.push("/bio");
         } else {
-          userStatus ="password";
+          userStatus = "password";
+          alert("Please enter a valid password");
         }
       } else {
         userStatus = "new";
+        if (confirm("Create new account?")) {
+          createNewAccount(userEmail, userPassword);
+        }
       }
     } else {
-      console.log("e-mail and/or password missing");
+      alert("E-mail and/or password missing");
     }
-    console.log(userStatus);
+  }
+
+  function createNewAccount(newUserEmail, newUserPassword) {
+    const newUserId = appUsers[(appUsers.length - 1)].id + 1;
+    const newUserName = "Avid Hiker #" + newUserId;
+    const newUser = {
+      id: newUserId,
+      email: newUserEmail,
+      password: newUserPassword,
+      name: newUserName,
+      avatar: "/newUser.png",
+      bio: "Enter your bio description here",
+      hikes: [],
+    };
+    appUsers.push(newUser);
+    localStorage.setItem('appUsers', JSON.stringify(appUsers));
+    setCurrentUser(newUser);
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    alert("Account created successfully!");
+    router.push("/bio");
   }
 
   return (
@@ -34,7 +65,12 @@ function Login() {
           <input type="email" name="email" id="userEmail" autoComplete="true" />
           <br />
           <label htmlFor="userPassword">Password: </label>
-          <input type="password" name="password" id="userPassword" autoComplete="false" />
+          <input
+            type="password"
+            name="password"
+            id="userPassword"
+            autoComplete="false"
+          />
           <br />
           <button type="submit" className="form-button">
             Log In
