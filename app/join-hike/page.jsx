@@ -1,24 +1,26 @@
 "use client";
 
 import Hike from "@/app/components/Hike";
-import { useGlobal } from '../context/GlobalContext';
+import { useGlobal } from "../context/GlobalContext";
 
-import './join-hike.css';
+import "./join-hike.css";
 
 function JoinHike() {
-  const { hikes } = useGlobal();
-  console.log("Hikes from context:", hikes);
-  console.log("First hike from context:", hikes[0]);
+  const { hikes, currentUser } = useGlobal();
+  const currentDate = Date.now();
+  const hikeSection = hikes.map((hike) => {
+    const hikeDate = new Date(hike.date);
+    if (hikeDate >= currentDate) {
+      if (hike.creator !== currentUser.id) {
+        return <Hike hikeType="available" hikeInfo={hike} />
+      }
+    }
+  });
+
   return (
     <div id="join-hike">
       <h3>Select a hike you would like to join:</h3>
-      <div className="hike-section">
-        <Hike hikeType="available" hikeInfo={hikes[0]} />
-        <Hike hikeType="available" hikeInfo={hikes[1]} />
-        <Hike hikeType="available" hikeInfo={hikes[2]} />
-        <Hike hikeType="available" hikeInfo={hikes[3]} />
-        <Hike hikeType="available" hikeInfo={hikes[4]} />
-      </div>
+      <div className="hike-section">{hikeSection}</div>
     </div>
   );
 }

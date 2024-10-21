@@ -6,9 +6,12 @@ import Link from "next/link";
 import './Navbar.css';
 
 export default function Navbar() {
-  const { currentUser } = useGlobal();
+  const { currentUser, setCurrentUser, appUsers } = useGlobal();
   const pathname = usePathname();
-
+  function handleClick() {
+    setCurrentUser(appUsers[0]);
+    localStorage.setItem('currentUser', JSON.stringify(appUsers[0]));
+  }
   return (
     <div id="navbar">
       <Link className={`${pathname === '/' ? 'active' : 'inactive'}`} id="title" href="/">WNC Hiking Hub</Link>
@@ -17,7 +20,9 @@ export default function Navbar() {
         <Link className={`${pathname === '/post-hike' ? 'active' : 'inactive'}`} href="/post-hike">Post a Hike</Link>
         <Link className={`${pathname === '/join-hike' ? 'active' : 'inactive'}`} href="/join-hike">Join a Hike</Link>
       </div>
-      <button><Link className="button-link" href="/login">Log In</Link></button>
+      {currentUser.id == 0 ?
+      <button><Link className="button-link" href="/login">Log In</Link></button> : <button onClick={handleClick}>Log Out</button>
+      }
     </div>
   );
 }
