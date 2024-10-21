@@ -12,7 +12,7 @@ function JoinHike() {
     const hikeDate = new Date(hike.date);
     if (hikeDate >= currentDate) {
       if (hike.creator !== currentUser.id) {
-        return <Hike hikeType="available" hikeInfo={hike} />
+        return <Hike hikeType="available" hikeInfo={hike} key={hike.id}/>
       }
     }
   });
