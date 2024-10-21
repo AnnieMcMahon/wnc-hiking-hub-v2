@@ -4,17 +4,17 @@ const sampleHikes = [
     creator: 0,
     allTrailsId: 0,
     title: "Mid-week Morning Hike - Triple Falls",
-    date: "10/26/2026",
+    date: "10/26/2023",
     time: "10:00 a.m.",
     location: "Triple Falls Parking Lot",
     comments: "Meet me by the blue CR-V. No dogs allowed. We will go slow and have time to take a lot of pictures."
   },
   {
     id: 1,
-    creator: 0,
+    creator: 1,
     allTrailsId: 1,
     title: "Afternoon Hike - Hard Times Loop",
-    date: "11/01/2026",
+    date: "11/01/2023",
     time: "2:00 p.m.",
     location: "Hardtimes Rd, Asheville",
     comments: "Bring your dog! Limit 12 people. The trail is not as hard as the name indicates, don't worry! I'll be wearing a red jacket."
@@ -31,7 +31,7 @@ const sampleHikes = [
   },
   {
     id: 3,
-    creator: 0,
+    creator: 1,
     allTrailsId: 3,
     title: "Owl Ridge Trail - laidback hike for everyone",
     date: "9/21/2026",

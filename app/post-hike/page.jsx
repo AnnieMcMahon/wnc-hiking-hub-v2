@@ -56,9 +56,9 @@ function PostHike() {
             <input type="text" name="hikeTitle" id="hikeTitle" />
             <br />
             <label htmlFor="date">Date: </label>
-            <input type="text" name="date" id="date" />
+            <input type="date" name="date" id="date" />
             <label htmlFor="time"> Time: </label>
-            <input type="text" name="time" id="time" />
+            <input type="time" name="time" id="time" />
             <br />
             <label htmlFor="location"> Location: </label>
             <input type="text" name="location" id="location" />

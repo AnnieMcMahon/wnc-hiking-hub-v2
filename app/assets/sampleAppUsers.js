@@ -10,7 +10,7 @@ const sampleAppUsers = [
   },
   {
     id: 1,
-    email: "anniemcmahon@gmail.com",
+    email: "anniemcmahon20@gmail.com",
     password: "1234",
     name: "Annie McMahon",
     avatar: "/avatar1.png",
