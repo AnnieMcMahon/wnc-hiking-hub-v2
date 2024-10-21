@@ -1,12 +1,11 @@
 "use client";
 import "./login.css";
-import appUsers from "../assets/sampleAppUsers";
 import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
 
 function Login() {
   const router = useRouter();
-  const { setCurrentUser } = useGlobal();
+  const { setCurrentUser, appUsers } = useGlobal();
 
   function handleSubmit(e) {
     e.preventDefault();

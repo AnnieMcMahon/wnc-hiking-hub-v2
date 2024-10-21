@@ -1,16 +1,19 @@
 'use client';
 
 import { useGlobal } from './context/GlobalContext';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import './Navbar.css';
 
 export default function Navbar() {
   const { currentUser, setCurrentUser, appUsers } = useGlobal();
   const pathname = usePathname();
+  const router = useRouter();
+
   function handleClick() {
     setCurrentUser(appUsers[0]);
     localStorage.setItem('currentUser', JSON.stringify(appUsers[0]));
+    router.push("/");
   }
   return (
     <div id="navbar">
