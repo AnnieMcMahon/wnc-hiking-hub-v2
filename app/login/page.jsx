@@ -5,7 +5,7 @@ import { useGlobal } from "../context/GlobalContext";
 
 function Login() {
   const router = useRouter();
-  const { setCurrentUser, appUsers } = useGlobal();
+  const { setCurrentUser, appUsers, setAppUsers } = useGlobal();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -46,7 +46,9 @@ function Login() {
       bio: "Enter your bio description here",
       hikes: [],
     };
-    appUsers.push(newUser);
+    setAppUsers(existingUsers => [...existingUsers, newUser]);
+
+    // appUsers.push(newUser);
     localStorage.setItem('appUsers', JSON.stringify(appUsers));
     setCurrentUser(newUser);
     localStorage.setItem('currentUser', JSON.stringify(newUser));

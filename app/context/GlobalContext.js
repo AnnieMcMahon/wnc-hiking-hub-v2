@@ -12,13 +12,13 @@ export function GlobalProvider({ children }) {
   const [hikes, setHikes] = useState(sampleHikes);
 
   useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem("appUsers"));
-    const storedHikes = JSON.parse(localStorage.getItem("hikes"));
-    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("stored values at the beginning of useEffect: ", storedUsers, storedHikes, storedUser);
-    if (!storedUser) {
-      localStorage.setItem("currentUser", JSON.stringify(sampleAppUsers[0]));
-    }
+    // const storedUsers = JSON.parse(localStorage.getItem("appUsers"));
+    // const storedHikes = JSON.parse(localStorage.getItem("hikes"));
+    // const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    localStorage.clear();
+    localStorage.setItem("hikes", JSON.stringify(sampleHikes));
+    localStorage.setItem("appUsers", JSON.stringify(sampleAppUsers));
+    localStorage.setItem("currentUser", JSON.stringify(sampleAppUsers[0]));
   }, []);
   
   // Store info in localStorage when it changes
@@ -33,21 +33,6 @@ export function GlobalProvider({ children }) {
   // useEffect(() => {
   //   localStorage.setItem("currentUser", JSON.stringify(currentUser));
   // }, [currentUser]);
-
-  //Load initial data in localstorage and state for testing purposes
-  // useEffect(() => {
-  //   localStorage.clear();
-  //   localStorage.setItem("hikes", JSON.stringify(sampleHikes));
-  //   localStorage.setItem("appUsers", JSON.stringify(sampleAppUsers));
-  //   localStorage.setItem("currentUser", JSON.stringify(sampleAppUsers[0]));
-
-  //   console.log(hikes);
-  //   console.log(appUsers);
-  //   console.log(currentUser);
-  //   console.log(JSON.parse(localStorage.getItem("hikes")));
-  //   console.log(JSON.parse(localStorage.getItem("appUsers")));
-  //   console.log(JSON.parse(localStorage.getItem("currentUser")));
-  // }, []);
   
 
   return (
