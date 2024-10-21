@@ -3,9 +3,11 @@ import Image from "next/image";
 import Hike from "../components/Hike";
 import "./bio.css";
 import { useGlobal } from "../context/GlobalContext";
+import { useRouter } from "next/navigation";
 
 function Bio() {
   const { currentUser, hikes } = useGlobal();
+  const router = useRouter();
   const upcomingHikes = [];
   const pastHikes = [];
   const createdHikes = [];
@@ -35,6 +37,10 @@ function Bio() {
   )
   });
 
+  function handleClick() {
+    router.push("/edit-bio");
+  }
+
   return (
     <div id="bio">
       <div className="bio-section">
@@ -47,7 +53,7 @@ function Bio() {
             height="15"
           />
           <h1>{currentUser.name}</h1>
-          <button>Edit Bio</button>
+          <button onClick={handleClick}>Edit Bio</button>
         </div>
         <div className="bio-text-section">
           <h2>About Me</h2>
