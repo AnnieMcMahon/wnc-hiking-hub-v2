@@ -23,14 +23,12 @@ function Hike({ hikeType, hikeInfo }) {
     switch (e.target.value) {
       case "Join Hike":
         newUserInfo.hikes.push(Number(e.target.name));
-        console.log("new user info: ", newUserInfo);
         updateState(newUserInfo);
         alert("Hike added to your hiking list.");
         break;
       case "Opt Out":
         const index = newUserInfo.hikes.indexOf(Number(e.target.name));
         newUserInfo.hikes.splice(index, 1);
-        console.log("new user info: ", newUserInfo);
         updateState(newUserInfo);
         alert("Hike removed from your hiking list.");
         break;
@@ -50,7 +48,6 @@ function Hike({ hikeType, hikeInfo }) {
     localStorage.setItem("currentUser", JSON.stringify(newUserInfo));
     newUserList[userIndex] = newUserInfo;
     setAppUsers(newUserList);
-    console.log(currentUser);
   }
 
   return (
