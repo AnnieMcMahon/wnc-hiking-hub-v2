@@ -14,6 +14,8 @@ function Bio() {
   const currentDate = Date.now();
   hikes.map((hike) => {
     const hikeDate = new Date(hike.date);
+    if (currentUser.hikes.indexOf(hike.id) !== -1) {
+
     if (hikeDate < currentDate) {
       pastHikes.push(hike);
     } else {
@@ -21,6 +23,7 @@ function Bio() {
     }
     if (hike.creator == currentUser.id) {
       createdHikes.push(hike.id);
+      }
     }
   });
   const upcomingHikeSection = upcomingHikes.map((hike) => {
