@@ -3,9 +3,12 @@
 import AllTrailsPost from "../components/AllTrailsPost";
 import allTrails from "../assets/allTrails";
 import { useState } from "react";
+import { useGlobal } from "../context/GlobalContext";
+
 import "./post-hike.css";
 
 function PostHike() {
+  const { hikes, setHikes, currentUser, setCurrentUser, appUsers, setAppUsers } = useGlobal();
   const [chosenHike, setChosenHike] = useState(null);
 
   function handleClick(trail) {
@@ -15,7 +18,6 @@ function PostHike() {
   function ChosenHikeComponent() {
     console.log(chosenHike);
     if (chosenHike) {
-      console.log("creating component");
       return (
         <div id="chosen-hike" className="hike">
           <h4>{chosenHike.name}</h4>
@@ -40,10 +42,51 @@ function PostHike() {
         </div>
       )
     }
-  }
+  };
+
+  function addToState(newHike) {
+    setHikes(existingHikes => [...existingHikes, newHike]);
+    localStorage.setItem('hikes', JSON.stringify(hikes));
+    //Add hike to user's hike list
+    let newUserInfo = currentUser;
+    newUserInfo.hikes.push(Number(newHike.id));
+      //Update user in state and localStorage
+      const userIndex = appUsers.indexOf(currentUser);
+      let newUserList = [...appUsers];
+      setCurrentUser(newUserInfo);
+      localStorage.setItem("currentUser", JSON.stringify(newUserInfo));
+      newUserList[userIndex] = newUserInfo;
+      setAppUsers(newUserList);
+    }
 
   function handleSubmit(e) {
-    //Need to develop
+    let newHike = {};
+    e.preventDefault();
+    const newId = hikes[hikes.length-1].id + 1;
+    let newAllTrailsId = -1;
+    if (chosenHike) {
+      newAllTrailsId = chosenHike.id;
+    }
+    const newTitle = e.target.hikeTitle.value;
+    const newDate = new Date(e.target.date.value);
+    const newTime = e.target.time.value;
+    const newLocation = e.target.location.value;
+    const newComments = e.target.comments.value;
+    if (newAllTrailsId > -1 && newTitle && newDate && newTime && newLocation && newComments) {
+      newHike =   {
+        id: newId,
+        creator: currentUser.id,
+        allTrailsId: newAllTrailsId,
+        title: newTitle,
+        date: newDate,
+        time: newTime,
+        location: newLocation,
+        comments: newComments
+      };
+      addToState(newHike);
+    } else {
+      alert("Please fill out all the information");
+    };
   }
 
   return (

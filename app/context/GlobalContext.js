@@ -34,7 +34,6 @@ export function GlobalProvider({ children }) {
   //   localStorage.setItem("currentUser", JSON.stringify(currentUser));
   // }, [currentUser]);
   
-
   return (
     <GlobalContext.Provider
       value={{

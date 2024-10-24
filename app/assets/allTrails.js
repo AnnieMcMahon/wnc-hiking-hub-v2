@@ -1,6 +1,6 @@
 const allTrails = [
   {
-    id: 0,
+    id: 1,
     name: 'Triple Falls Trail',
     area: 'DuPont State Recreational Forest',
     difficulty: 'Moderate',
@@ -10,7 +10,7 @@ const allTrails = [
     link: 'https://www.alltrails.com/trail/us/north-carolina/triple-falls-trail'
   },
   {
-    id: 1,
+    id: 2,
     name: 'Hard Times Loop',
     area: 'Pisgah National Forest',
     difficulty: 'Moderate',
@@ -20,7 +20,7 @@ const allTrails = [
     link: 'https://www.alltrails.com/trail/us/north-carolina/hardtimes-loop'
   },
   {
-    id: 2,
+    id: 3,
     name: 'Lake Powhatan via Bent Creek Trail',
     area: 'North Carolina Arboretum',
     difficulty: 'Easy',
@@ -30,7 +30,7 @@ const allTrails = [
     link: 'https://www.alltrails.com/trail/us/north-carolina/lake-powhatan-loop-via-bent-creek-trail'
   },
   {
-    id: 3,
+    id: 4,
     name: 'Owl Ridge Trail',
     area: 'North Carolina Arboretum',
     difficulty: 'Moderate',
@@ -40,7 +40,7 @@ const allTrails = [
     link: 'https://www.alltrails.com/trail/us/north-carolina/owl-ridge-trail'
   },
   {
-    id: 4,
+    id: 5,
     name: 'Fletcher Loop',
     area: 'Bill Moore Community Park',
     difficulty: 'Easy',
@@ -50,7 +50,7 @@ const allTrails = [
     link: 'https://www.alltrails.com/explore/trail/us/north-carolina/fletcher-park-loop'
   },
   {
-    id: 5,
+    id: 6,
     name: 'Looking Glass Rock Trail',
     area: 'Pisgah National Forest',
     difficulty: 'Moderate',

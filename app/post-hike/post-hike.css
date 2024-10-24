@@ -15,7 +15,7 @@
   overflow: scroll;
 }
 
-#post-hike input[name="title"] {
+#post-hike input[name="hikeTitle"] {
   width: 20rem;
 }
 

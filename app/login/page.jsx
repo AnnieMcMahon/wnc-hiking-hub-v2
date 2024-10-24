@@ -47,8 +47,6 @@ function Login() {
       hikes: [],
     };
     setAppUsers(existingUsers => [...existingUsers, newUser]);
-
-    // appUsers.push(newUser);
     localStorage.setItem('appUsers', JSON.stringify(appUsers));
     setCurrentUser(newUser);
     localStorage.setItem('currentUser', JSON.stringify(newUser));
