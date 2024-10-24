@@ -4,11 +4,13 @@ import AllTrailsPost from "../components/AllTrailsPost";
 import allTrails from "../assets/allTrails";
 import { useState } from "react";
 import { useGlobal } from "../context/GlobalContext";
+import { useRouter } from "next/navigation";
 
 import "./post-hike.css";
 
 function PostHike() {
   const { hikes, setHikes, currentUser, setCurrentUser, appUsers, setAppUsers } = useGlobal();
+  const router = useRouter();
   const [chosenHike, setChosenHike] = useState(null);
 
   function handleClick(trail) {
@@ -68,7 +70,7 @@ function PostHike() {
       newAllTrailsId = chosenHike.id;
     }
     const newTitle = e.target.hikeTitle.value;
-    const newDate = new Date(e.target.date.value);
+    const newDate = e.target.date.value;
     const newTime = e.target.time.value;
     const newLocation = e.target.location.value;
     const newComments = e.target.comments.value;
@@ -84,6 +86,8 @@ function PostHike() {
         comments: newComments
       };
       addToState(newHike);
+      alert("Hike created");
+      router.push("/bio");
     } else {
       alert("Please fill out all the information");
     };

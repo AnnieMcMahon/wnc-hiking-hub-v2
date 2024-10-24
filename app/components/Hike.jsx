@@ -1,10 +1,14 @@
 "use client";
 import { useGlobal } from "../context/GlobalContext";
+import { useRouter } from "next/navigation";
 import allTrails from "@/app/assets/allTrails";
 
-function Hike({ hikeType, hikeInfo }) {
-  const { appUsers, setAppUsers, currentUser, setCurrentUser } = useGlobal();
+function Hike({ hikeType, hikeInfo, cancelled }) {
+  const { appUsers, setAppUsers, currentUser, setCurrentUser, setHike } = useGlobal();
+  const router = useRouter();
+
   let buttonMessage = "";
+  if (!cancelled) {
   if (hikeType === "joined") {
     buttonMessage = "Opt Out";
   } else if (hikeType === "created") {
@@ -12,6 +16,7 @@ function Hike({ hikeType, hikeInfo }) {
   } else if (hikeType === "available") {
     buttonMessage = "Join Hike";
   }
+}
 
   const allTrailsInfo = allTrails.find(
     (trail) => trail.id == hikeInfo.allTrailsId
@@ -32,8 +37,9 @@ function Hike({ hikeType, hikeInfo }) {
         updateState(newUserInfo);
         alert("Hike removed from your hiking list.");
         break;
-      case "Edit Hike":
-        alert("editing hike (to be developed)");
+        case "Edit Hike":
+          setHike(e.target.name);
+          router.push("/edit-hike");
         break;
       default:
         console.log("Different button");

@@ -30,13 +30,16 @@ function Bio() {
     return (
     <Hike
       hikeType={createdHikes.includes(hike.id) ? "created" : "joined"}
+      cancelled={hike.title.includes("CANCELLED") ? true : false}
       hikeInfo={hike}
       key={hike.id}
     />)
   });
   const pastHikeSection = pastHikes.map((hike) => {
     return (
-    <Hike hikeType="history" hikeInfo={hike} key={hike.id} />
+    <Hike hikeType="history" hikeInfo={hike} key={hike.id} 
+    cancelled={hike.title.includes("CANCELLED") ? true : false}
+     />
   )
   });
 

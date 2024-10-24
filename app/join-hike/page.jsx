@@ -13,7 +13,8 @@ function JoinHike() {
     if (hikeDate >= currentDate) {
       if (hike.creator !== currentUser.id) {
         if (currentUser.hikes.indexOf(hike.id) == -1) {
-          return <Hike hikeType="available" hikeInfo={hike} key={hike.id} />;
+          if (!hike.title.includes("CANCELLED"))
+          return <Hike hikeType="available" hikeInfo={hike} key={hike.id}  />;
         }
       }
     }

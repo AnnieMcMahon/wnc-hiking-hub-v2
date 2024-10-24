@@ -10,6 +10,7 @@ export function GlobalProvider({ children }) {
   const [appUsers, setAppUsers] = useState(sampleAppUsers);
   const [currentUser, setCurrentUser] = useState(sampleAppUsers[0]);
   const [hikes, setHikes] = useState(sampleHikes);
+  const [hike, setHike] = useState(sampleHikes[0]);
 
   useEffect(() => {
     // const storedUsers = JSON.parse(localStorage.getItem("appUsers"));
@@ -19,6 +20,7 @@ export function GlobalProvider({ children }) {
     localStorage.setItem("hikes", JSON.stringify(sampleHikes));
     localStorage.setItem("appUsers", JSON.stringify(sampleAppUsers));
     localStorage.setItem("currentUser", JSON.stringify(sampleAppUsers[0]));
+    localStorage.setItem("hike", JSON.stringify(sampleHikes[0]));
   }, []);
   
   // Store info in localStorage when it changes
@@ -43,6 +45,8 @@ export function GlobalProvider({ children }) {
         setAppUsers,
         hikes,
         setHikes,
+        hike,
+        setHike
       }}
     >
       {children}
