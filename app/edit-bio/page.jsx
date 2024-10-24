@@ -13,12 +13,14 @@ function EditBio() {
     bio: currentUser.bio,
   });
 
+  const [avatarFile, setAvatarFile] = useState();
+
   function handleSubmit(e) {
     e.preventDefault();
     const newInfo = currentUser;
-    let newName = e.target.name.value;
-    let newAvatar = e.target.avatar.value;
-    let newBio = e.target.bio.value;
+    let newName = bioInfo.name;
+    let newAvatar = avatarFile;
+    let newBio = bioInfo.bio;
     if (newName) newInfo.name = newName;
     if (newAvatar) newInfo.avatar = newAvatar;
     if (newBio) newInfo.bio = newBio;
@@ -41,6 +43,11 @@ function EditBio() {
       }));
     }
 
+    function handleAvatarChange(e) {
+      setAvatarFile(URL.createObjectURL(e.target.files[0]));
+      console.log(e.target.files[0]);
+    }
+
   return (
     <div id="edit-bio">
       <h1>Edit Bio</h1>
@@ -50,7 +57,7 @@ function EditBio() {
           <input type="text" name="name" id="newName" value={bioInfo.name || ""} onChange={(e) => handleChange(e)}/>
           <br />
           <label htmlFor="newAvatar">Avatar: </label>
-          <input type="file" accept="image/*" name="avatar" id="newAvatar" />
+          <input type="file" accept="image/*" name="avatar" id="newAvatar" onChange={(e) => handleAvatarChange(e)}/>
           <br />
           <label htmlFor="newBio">Bio: </label>
           <textarea name="bio" id="newBio" value={bioInfo.bio || ""} onChange={(e) => handleChange(e)}/>
