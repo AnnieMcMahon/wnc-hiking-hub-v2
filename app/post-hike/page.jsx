@@ -18,7 +18,6 @@ function PostHike() {
   }
 
   function ChosenHikeComponent() {
-    console.log(chosenHike);
     if (chosenHike) {
       return (
         <div id="chosen-hike" className="hike">

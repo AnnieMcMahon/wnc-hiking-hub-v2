@@ -25,7 +25,7 @@ const sampleHikes = [
     allTrailsId: 6,
     title: "Lake Powhatan via Bent Creek Trail",
     date: "2026-09-04",
-    time: "9:00",
+    time: "09:00",
     location: "Arboretum hiking parking lot (left after the gate)",
     comments: "Be on time, we're leaving exactly at 9. We should be back before lunch, but bring a snack and plenty of water. We'll be taking a break midway."
   },
