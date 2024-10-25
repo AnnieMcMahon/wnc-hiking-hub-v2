@@ -11,36 +11,41 @@ function Bio() {
   const upcomingHikes = [];
   const pastHikes = [];
   const createdHikes = [];
-  const currentDate = Date.now();
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
   hikes.map((hike) => {
-    const hikeDate = new Date(hike.date);
+    let hikeDate = new Date(hike.date);
+    hikeDate.setHours(0, 0, 0, 0);
     if (currentUser.hikes.indexOf(hike.id) !== -1) {
-
-    if (hikeDate < currentDate) {
-      pastHikes.push(hike);
-    } else {
-      upcomingHikes.push(hike);
-    }
-    if (hike.creator == currentUser.id) {
-      createdHikes.push(hike.id);
+      if (hikeDate < currentDate) {
+        pastHikes.push(hike);
+      } else {
+        upcomingHikes.push(hike);
+      }
+      if (hike.creator == currentUser.id) {
+        createdHikes.push(hike.id);
       }
     }
   });
   const upcomingHikeSection = upcomingHikes.map((hike) => {
     return (
-    <Hike
-      hikeType={createdHikes.includes(hike.id) ? "created" : "joined"}
-      cancelled={hike.title.includes("CANCELLED") ? true : false}
-      hikeInfo={hike}
-      key={hike.id}
-    />)
+      <Hike
+        hikeType={createdHikes.includes(hike.id) ? "created" : "joined"}
+        cancelled={hike.title.includes("CANCELLED") ? true : false}
+        hikeInfo={hike}
+        key={hike.id}
+      />
+    );
   });
   const pastHikeSection = pastHikes.map((hike) => {
     return (
-    <Hike hikeType="history" hikeInfo={hike} key={hike.id} 
-    cancelled={hike.title.includes("CANCELLED") ? true : false}
-     />
-  )
+      <Hike
+        hikeType="history"
+        hikeInfo={hike}
+        key={hike.id}
+        cancelled={hike.title.includes("CANCELLED") ? true : false}
+      />
+    );
   });
 
   function handleClick() {

@@ -4,7 +4,7 @@ const sampleHikes = [
     creator: 1,
     allTrailsId: 1,
     title: "Mid-week Morning Hike - Triple Falls",
-    date: "2023-10-26",
+    date: "2024-10-25",
     time: "10:00",
     location: "Triple Falls Parking Lot",
     comments: "Meet me by the blue CR-V. No dogs allowed. We will go slow and have time to take a lot of pictures."

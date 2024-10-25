@@ -8,8 +8,14 @@ function EditHike() {
   const router = useRouter();
   const { hikes, hike, setHikes, setHike } = useGlobal();
 
-  const currentHikeInfo = hikes.find((hikeData) => hikeData.id == hike);
-  const [hikeInfo, sethikeInfo] = useState(currentHikeInfo);
+  const currentHikeInfo = hikes?.find((hikeData) => hikeData.id == hike) || {};
+  const [hikeInfo, sethikeInfo] = useState(currentHikeInfo || {
+    title: "",
+    date: "",
+    time: "",
+    location: "",
+    comments: "",
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,13 +27,14 @@ function EditHike() {
       localStorage.setItem("hikes", JSON.stringify(newHikeList));
       setHike(hikeInfo);
       localStorage.setItem("hike", JSON.stringify(hikeInfo));
+      router.push("/bio");
     } else {
       alert("Please complete all information");
     };
   }
 
   function handleDiscard() {
-    router.push("/edit-hike");
+    router.push("/bio");
   }
 
   function handleCancel() {
