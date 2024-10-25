@@ -7,9 +7,11 @@ import "./join-hike.css";
 
 function JoinHike() {
   const { hikes, currentUser } = useGlobal();
-  const currentDate = Date.now();
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
   const hikeSection = hikes.map((hike) => {
     const hikeDate = new Date(hike.date);
+    hikeDate.setHours(0, 0, 0, 0);
     if (hikeDate >= currentDate) {
       if (hike.creator !== currentUser.id) {
         if (currentUser.hikes.indexOf(hike.id) == -1) {
