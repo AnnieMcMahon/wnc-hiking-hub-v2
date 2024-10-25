@@ -13,8 +13,8 @@ function Bio() {
   const createdHikes = [];
   const currentDate = new Date();
   currentDate.setHours(0, 0, 0, 0);
-  hikes.map((hike) => {
-    let hikeDate = new Date(hike.date);
+  hikes.forEach((hike) => {
+    const hikeDate = new Date(hike.date);
     hikeDate.setHours(0, 0, 0, 0);
     if (currentUser.hikes.indexOf(hike.id) !== -1) {
       if (hikeDate < currentDate) {
@@ -27,6 +27,9 @@ function Bio() {
       }
     }
   });
+  pastHikes.sort((a, b) => new Date(b.date) - new Date(a.date));
+  upcomingHikes.sort((a, b) => new Date(a.date) - new Date(b.date));
+
   const upcomingHikeSection = upcomingHikes.map((hike) => {
     return (
       <Hike
