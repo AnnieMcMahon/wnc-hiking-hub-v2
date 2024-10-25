@@ -45,7 +45,7 @@ const sampleHikes = [
     allTrailsId: 5,
     title: "Fletcher Loop Fitness Hike",
     date: "2026-09-27",
-    time: "15:00 ",
+    time: "15:00",
     location: "Bill Moore Community Park, near the dog park",
     comments: "This is a fitness hike. Only sign up if you can go 3 mph or faster. We will not wait for stragglers. You've been warned! Also, no dogs."
   },
