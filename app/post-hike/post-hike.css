@@ -23,8 +23,8 @@
   width: 15rem;
 }
 
-#post-hike input[type="checkbox"] {
-  margin-left: 1rem;
+#post-hike label {
+  margin-right: 0.5rem;
 }
 
 #post-hike input[name="location"] {

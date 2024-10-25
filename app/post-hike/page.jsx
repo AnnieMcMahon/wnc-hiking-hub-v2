@@ -96,25 +96,19 @@ function PostHike() {
     <div id="post-hike">
       <div className="content">
         <div id="form-area" className="text-box">
-          <h2>1. Search for a hike</h2>
+          <h2>1. Search for a trail</h2>
           <form>
             <label htmlFor="area">Area: </label>
-            <input
-              list="area"
-              id="area"
-              name="area"
-              placeholder="Anywhere in WNC"
-            />
-            <datalist name="area">
-              <option value="Anywhere in WNC" />
-              <option value="DuPont State Recreational Forest" />
-              <option value="Pisgah National Forest" />
-              <option value="North Carolina Arboretum" />
-              <option value="Nantahala Forest" />
-              <option value="Appalachian Trail" />
-              <option value="Mountains-to-Sea Trail" />
-              <option value="Asheville Area" />
-            </datalist>
+            <select name="area" id="area">
+              <option value="Anywhere in WNC">Anywhere in WNC</option>
+              <option value="DuPont State Recreational Forest">DuPont State Recreational Forest</option>
+              <option value="Pisgah National Forest">Pisgah National Forest</option>
+              <option value="North Carolina Arboretum">North Carolina Arboretum</option>
+              <option value="Nantahala Forest">Nantahala Forest</option>
+              <option value="Appalachian Trail">Appalachian Trail</option>
+              <option value="Mountains-to-Sea Trail">Mountains-to-Sea Trail</option>
+              <option value="Asheville Area">Asheville Area</option>
+            </select>
             <br />
             <label htmlFor="length">Length: </label>
             <select name="length" id="length">
@@ -130,8 +124,8 @@ function PostHike() {
               <option value="moderate">Moderate</option>
               <option value="strenuous">Strenuous</option>
             </select>
-            <br />
-            <h2>Keywords: </h2>
+            <br/>
+            {/* <p>Keywords: </p> */}
             <input
               type="checkbox"
               name="waterfall"
@@ -148,7 +142,7 @@ function PostHike() {
             <br />
             <button className="form-button">Search</button>
           </form>
-          <h2>2. Select a hike from the right column</h2>
+          <h2>2. Select a trail from the right column</h2>
           <ChosenHikeComponent />
           <h2>3. Fill out the hike information</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -157,7 +151,7 @@ function PostHike() {
             <br />
             <label htmlFor="date">Date: </label>
             <input type="date" name="date" id="date" />
-            <label htmlFor="time"> Time: </label>
+            <label htmlFor="time">  Time: </label>
             <input type="time" name="time" id="time" />
             <br />
             <label htmlFor="location"> Location: </label>
@@ -173,7 +167,7 @@ function PostHike() {
           </form>
         </div>
         <div className="hike-section">
-          <h2>Hike Search Results</h2>
+          <h2>Trail Search Results</h2>
           {allTrails.map((trail) => (
             <AllTrailsPost
               hikeInfo={trail}

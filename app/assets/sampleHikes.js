@@ -14,7 +14,7 @@ const sampleHikes = [
     creator: 2,
     allTrailsId: 2,
     title: "Afternoon Hike - Hard Times Loop",
-    date: "2023-11-01",
+    date: "2024-11-01",
     time: "14:00",
     location: "Hardtimes Rd, Asheville",
     comments: "Bring your dog! Limit 12 people. The trail is not as hard as the name indicates, don't worry! I'll be wearing a red jacket."
@@ -24,7 +24,7 @@ const sampleHikes = [
     creator: 1,
     allTrailsId: 6,
     title: "Lake Powhatan via Bent Creek Trail",
-    date: "2026-09-04",
+    date: "2024-09-04",
     time: "09:00",
     location: "Arboretum hiking parking lot (left after the gate)",
     comments: "Be on time, we're leaving exactly at 9. We should be back before lunch, but bring a snack and plenty of water. We'll be taking a break midway."
