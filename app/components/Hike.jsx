@@ -2,26 +2,29 @@
 import { useGlobal } from "../context/GlobalContext";
 import { useRouter } from "next/navigation";
 import allTrails from "@/app/assets/allTrails";
+import convertDate from "../assets/convertDate";
 
 function Hike({ hikeType, hikeInfo, cancelled }) {
-  const { appUsers, setAppUsers, currentUser, setCurrentUser, setHike } = useGlobal();
+  const { appUsers, setAppUsers, currentUser, setCurrentUser, setHike } =
+    useGlobal();
   const router = useRouter();
 
   let buttonMessage = "";
   if (!cancelled) {
-  if (hikeType === "joined") {
-    buttonMessage = "Opt Out";
-  } else if (hikeType === "created") {
-    buttonMessage = "Edit Hike";
-  } else if (hikeType === "available") {
-    buttonMessage = "Join Hike";
+    if (hikeType === "joined") {
+      buttonMessage = "Opt Out";
+    } else if (hikeType === "created") {
+      buttonMessage = "Edit Hike";
+    } else if (hikeType === "available") {
+      buttonMessage = "Join Hike";
+    }
   }
-}
 
   const allTrailsInfo = allTrails.find(
     (trail) => trail.id == hikeInfo.allTrailsId
   );
   const hikeCreator = appUsers.find((user) => user.id == hikeInfo.creator);
+  const hikingDate = convertDate(hikeInfo.date);
 
   function handleClick(e) {
     let newUserInfo = currentUser;
@@ -37,9 +40,9 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
         updateUser(newUserInfo);
         alert("Hike removed from your hiking list.");
         break;
-        case "Edit Hike":
-          setHike(e.target.name);
-          router.push("/edit-hike");
+      case "Edit Hike":
+        setHike(e.target.name);
+        router.push("/edit-hike");
         break;
       default:
         console.log("Different button");
@@ -63,7 +66,7 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
       </h4>
       <h5>{allTrailsInfo.area}</h5>
       <h5>
-        {hikeInfo.date}, {hikeInfo.time}, {hikeInfo.location}
+        {hikingDate}, {hikeInfo.time}, {hikeInfo.location}
       </h5>
       <p>
         {allTrailsInfo.difficulty} * {allTrailsInfo.length} *{" "}
