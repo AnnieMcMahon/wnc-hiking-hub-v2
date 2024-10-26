@@ -1,5 +1,4 @@
 "use client";
-
 import AllTrailsPost from "../components/AllTrailsPost";
 import ChosenHike from "../components/ChosenHike";
 import allTrails from "../assets/allTrails";

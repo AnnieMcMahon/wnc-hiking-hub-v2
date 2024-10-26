@@ -28,13 +28,13 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
     switch (e.target.value) {
       case "Join Hike":
         newUserInfo.hikes.push(Number(e.target.name));
-        updateState(newUserInfo);
+        updateUser(newUserInfo);
         alert("Hike added to your hiking list.");
         break;
       case "Opt Out":
         const index = newUserInfo.hikes.indexOf(Number(e.target.name));
         newUserInfo.hikes.splice(index, 1);
-        updateState(newUserInfo);
+        updateUser(newUserInfo);
         alert("Hike removed from your hiking list.");
         break;
         case "Edit Hike":
@@ -46,14 +46,15 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
     }
   }
 
-  function updateState(newUserInfo) {
-    //Update state and localStorage
-    const userIndex = appUsers.indexOf(currentUser);
-    let newUserList = [...appUsers];
-    setCurrentUser(newUserInfo);
-    localStorage.setItem("currentUser", JSON.stringify(newUserInfo));
-    newUserList[userIndex] = newUserInfo;
-    setAppUsers(newUserList);
+  function updateUser(userInfo) {
+    //Update currentUser
+    setCurrentUser(userInfo);
+    localStorage.setItem("currentUser", JSON.stringify(userInfo));
+    //Update userList
+    let userList = [...appUsers];
+    const userIndex = userList.findIndex((user) => user.id == userInfo.id);
+    userList[userIndex] = userInfo;
+    setAppUsers(userList);
   }
 
   return (

@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
 import { useState } from "react";
 
-
 function EditBio() {
   const router = useRouter();
   const { currentUser, setCurrentUser, appUsers, setAppUsers } = useGlobal();
@@ -24,29 +23,36 @@ function EditBio() {
     if (newName) newInfo.name = newName;
     if (newAvatar) newInfo.avatar = newAvatar;
     if (newBio) newInfo.bio = newBio;
-      //Update state and localStorage
-      const userIndex = appUsers.indexOf(currentUser);
-      setCurrentUser(newInfo);
-      localStorage.setItem('currentUser', JSON.stringify(newInfo));
-      let newUserList = [...appUsers]; 
-      newUserList[userIndex] = newInfo;
-      setAppUsers(newUserList);
-      router.push("/bio");
-    }
+    //Update state and localStorage
+    updateUser(newInfo);
+    router.push("/bio");
+  }
 
-    function handleClick() {
-      router.push("/edit-bio");
-    }
+  function updateUser(userInfo) {
+    //Update currentUser
+    setCurrentUser(userInfo);
+    localStorage.setItem("currentUser", JSON.stringify(userInfo));
+    //Update userList
+    let userList = [...appUsers];
+    const userIndex = userList.findIndex((user) => user.id == userInfo.id);
+    userList[userIndex] = userInfo;
+    setAppUsers(userList);
+  }
 
-    function handleChange(e) {
-      setBioInfo((prevState) => ({
-        ...prevState, [e.target.name]: e.target.value,
-      }));
-    }
+  function handleClick() {
+    router.push("/edit-bio");
+  }
 
-    function handleAvatarChange(e) {
-      setAvatarFile(URL.createObjectURL(e.target.files[0]));
-    }
+  function handleChange(e) {
+    setBioInfo((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
+  function handleAvatarChange(e) {
+    setAvatarFile(URL.createObjectURL(e.target.files[0]));
+  }
 
   return (
     <div id="edit-bio">
@@ -54,13 +60,30 @@ function EditBio() {
       <div id="form-area" className="text-box">
         <form onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor="newName">Name: </label>
-          <input type="text" name="name" id="newName" value={bioInfo.name || ""} onChange={(e) => handleChange(e)}/>
+          <input
+            type="text"
+            name="name"
+            id="newName"
+            value={bioInfo.name || ""}
+            onChange={(e) => handleChange(e)}
+          />
           <br />
           <label htmlFor="newAvatar">Avatar: </label>
-          <input type="file" accept="image/*" name="avatar" id="newAvatar" onChange={(e) => handleAvatarChange(e)}/>
+          <input
+            type="file"
+            accept="image/*"
+            name="avatar"
+            id="newAvatar"
+            onChange={(e) => handleAvatarChange(e)}
+          />
           <br />
           <label htmlFor="newBio">Bio: </label>
-          <textarea name="bio" id="newBio" value={bioInfo.bio || ""} onChange={(e) => handleChange(e)}/>
+          <textarea
+            name="bio"
+            id="newBio"
+            value={bioInfo.bio || ""}
+            onChange={(e) => handleChange(e)}
+          />
           <br />
           <button type="submit" className="form-button">
             Save
