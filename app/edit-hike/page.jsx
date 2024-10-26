@@ -23,7 +23,6 @@ export default function EditHike() {
     if (hikeInfo.title && hikeInfo.date && hikeInfo.time && hikeInfo.location && hikeInfo.comments) {
       // Update state and localStorage with new hike info
       setHike(hikeInfo);
-      localStorage.setItem("hike", JSON.stringify(hikeInfo));
       updateHikes(hikeInfo);
       router.push("/bio");
     } else {
@@ -42,7 +41,6 @@ export default function EditHike() {
     currentHikeInfo.title = `CANCELLED - ${oldTitle}`;
     //Update hike and hikes in state and localStorage
     setHike(hikeInfo);
-    localStorage.setItem("hike", JSON.stringify(hikeInfo));
     updateHikes(hikeInfo);
     alert("Hike has been cancelled.");
     router.push("/bio");
@@ -54,7 +52,6 @@ function updateHikes(hikeData) {
   const hikeIndex = hikeList.findIndex(h => h.id == hikeData.id);
   hikeList[hikeIndex] = hikeData;
   setHikes(hikeList);
-  localStorage.setItem("hikes", JSON.stringify(hikeList));
 };
 
   function handleChange(e) {

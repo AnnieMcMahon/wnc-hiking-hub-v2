@@ -24,17 +24,21 @@ export function GlobalProvider({ children }) {
   }, []);
   
   // Store info in localStorage when it changes
-  // useEffect(() => {
-  //   localStorage.setItem("hikes", JSON.stringify(hikes));
-  // }, [hikes]);
+  useEffect(() => {
+    localStorage.setItem("hike", JSON.stringify(hike));
+  }, [hike]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("appUsers", JSON.stringify(appUsers));
-  // }, [appUsers]);
+  useEffect(() => {
+    localStorage.setItem("hikes", JSON.stringify(hikes));
+  }, [hikes]);
+
+  useEffect(() => {
+    localStorage.setItem("appUsers", JSON.stringify(appUsers));
+  }, [appUsers]);
   
-  // useEffect(() => {
-  //   localStorage.setItem("currentUser", JSON.stringify(currentUser));
-  // }, [currentUser]);
+  useEffect(() => {
+    localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  }, [currentUser]);
   
   return (
     <GlobalContext.Provider

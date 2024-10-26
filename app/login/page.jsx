@@ -17,7 +17,6 @@ function Login() {
       if (userInfo) {
         if (userInfo.password == userPassword) {
           setCurrentUser(userInfo);
-          localStorage.setItem('currentUser', JSON.stringify(userInfo));
           router.push("/bio");
         } else {
           userStatus = "password";
@@ -47,9 +46,7 @@ function Login() {
       hikes: [],
     };
     setAppUsers(existingUsers => [...existingUsers, newUser]);
-    localStorage.setItem('appUsers', JSON.stringify(appUsers));
     setCurrentUser(newUser);
-    localStorage.setItem('currentUser', JSON.stringify(newUser));
     alert("Account created successfully!");
     router.push("/bio");
   }

@@ -58,7 +58,6 @@ function PostHike() {
   function addHikeToState(hikeInfo) {
     //Add hike to hikes
     setHikes((hikeList) => [...hikeList, hikeInfo]);
-    localStorage.setItem("hikes", JSON.stringify(hikes));
     //Add hike to currentUser's hike list
     let userInfo = currentUser;
     userInfo.hikes.push(Number(hikeInfo.id));
@@ -69,7 +68,6 @@ function PostHike() {
   function updateUser(userInfo) {
     //Update currentUser
     setCurrentUser(userInfo);
-    localStorage.setItem("currentUser", JSON.stringify(userInfo));
     //Update userList
     let userList = [...appUsers];
     const userIndex = userList.findIndex((user) => user.id == userInfo.id);

@@ -49,7 +49,6 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
   function updateUser(userInfo) {
     //Update currentUser
     setCurrentUser(userInfo);
-    localStorage.setItem("currentUser", JSON.stringify(userInfo));
     //Update userList
     let userList = [...appUsers];
     const userIndex = userList.findIndex((user) => user.id == userInfo.id);

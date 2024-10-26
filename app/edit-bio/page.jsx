@@ -31,7 +31,6 @@ function EditBio() {
   function updateUser(userInfo) {
     //Update currentUser
     setCurrentUser(userInfo);
-    localStorage.setItem("currentUser", JSON.stringify(userInfo));
     //Update userList
     let userList = [...appUsers];
     const userIndex = userList.findIndex((user) => user.id == userInfo.id);
@@ -65,6 +64,7 @@ function EditBio() {
             name="name"
             id="newName"
             value={bioInfo.name || ""}
+            autoComplete="true"
             onChange={(e) => handleChange(e)}
           />
           <br />
