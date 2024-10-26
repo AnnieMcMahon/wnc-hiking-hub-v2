@@ -24,6 +24,7 @@ function EditBio() {
     if (newName) newInfo.name = newName;
     if (newAvatar) newInfo.avatar = newAvatar;
     if (newBio) newInfo.bio = newBio;
+      //Update state and localStorage
       const userIndex = appUsers.indexOf(currentUser);
       setCurrentUser(newInfo);
       localStorage.setItem('currentUser', JSON.stringify(newInfo));
@@ -45,7 +46,6 @@ function EditBio() {
 
     function handleAvatarChange(e) {
       setAvatarFile(URL.createObjectURL(e.target.files[0]));
-      console.log(e.target.files[0]);
     }
 
   return (

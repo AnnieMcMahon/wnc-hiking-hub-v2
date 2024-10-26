@@ -4,10 +4,11 @@ import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
 import { useState } from "react";
 
-function EditHike() {
+export default function EditHike() {
   const router = useRouter();
   const { hikes, hike, setHikes, setHike } = useGlobal();
 
+  // Initializing to no data prevents errors in preloading page 
   const currentHikeInfo = hikes?.find((hikeData) => hikeData.id == hike) || {};
   const [hikeInfo, sethikeInfo] = useState(currentHikeInfo || {
     title: "",
@@ -20,13 +21,10 @@ function EditHike() {
   function handleSubmit(e) {
     e.preventDefault();
     if (hikeInfo.title && hikeInfo.date && hikeInfo.time && hikeInfo.location && hikeInfo.comments) {
-      const hikeIndex = hikes.indexOf(currentHikeInfo);
-      let newHikeList = [...hikes];
-      newHikeList[hikeIndex] = hikeInfo;
-      setHikes(newHikeList);
-      localStorage.setItem("hikes", JSON.stringify(newHikeList));
+      // Update state and localStorage with new hike info
       setHike(hikeInfo);
       localStorage.setItem("hike", JSON.stringify(hikeInfo));
+      updateHikes(hikeInfo);
       router.push("/bio");
     } else {
       alert("Please complete all information");
@@ -38,18 +36,26 @@ function EditHike() {
   }
 
   function handleCancel() {
+    if (confirm("Press OK to cancel this hike (cannot be reversed)")) {
+    // Add CANCELLED to the hike title and updates State and localStorage
     const oldTitle = currentHikeInfo.title;
     currentHikeInfo.title = `CANCELLED - ${oldTitle}`;
-    const hikeIndex = hikes.indexOf(hike);
-    let newHikeList = [...hikes];
-    newHikeList[hikeIndex] = hikeInfo;
-    setHikes(newHikeList);
-    localStorage.setItem("hikes", JSON.stringify(newHikeList));
+    //Update hike and hikes in state and localStorage
     setHike(hikeInfo);
     localStorage.setItem("hike", JSON.stringify(hikeInfo));
+    updateHikes(hikeInfo);
     alert("Hike has been cancelled.");
     router.push("/bio");
+    }
   }
+
+function updateHikes(hikeData) {
+  let hikeList = [...hikes];
+  const hikeIndex = hikeList.findIndex(h => h.id == hikeData.id);
+  hikeList[hikeIndex] = hikeData;
+  setHikes(hikeList);
+  localStorage.setItem("hikes", JSON.stringify(hikeList));
+};
 
   function handleChange(e) {
     sethikeInfo((prevState) => ({
@@ -106,5 +112,4 @@ function EditHike() {
       </div>
     </div>
   );
-}
-export default EditHike;
+};

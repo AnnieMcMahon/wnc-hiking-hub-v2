@@ -1,11 +1,11 @@
 "use client";
 
 import AllTrailsPost from "../components/AllTrailsPost";
+import ChosenHike from "../components/ChosenHike";
 import allTrails from "../assets/allTrails";
 import { useState } from "react";
 import { useGlobal } from "../context/GlobalContext";
 import { useRouter } from "next/navigation";
-
 import "./post-hike.css";
 
 function PostHike() {
@@ -15,55 +15,12 @@ function PostHike() {
 
   function handleClick(trail) {
     setChosenHike(trail);
-  }
-
-  function ChosenHikeComponent() {
-    if (chosenHike) {
-      return (
-        <div id="chosen-hike" className="hike">
-          <h4>{chosenHike.name}</h4>
-          <p>{chosenHike.area}</p>
-          <p>
-            {chosenHike.difficulty} * {chosenHike.length} *{" "}
-            {chosenHike.elevation} * {chosenHike.type}
-          </p>
-          <a
-            href={chosenHike.link}
-            target="_blank"
-            onClick={(e) => e.stopPropagation()}
-          >
-            All Trails Link
-          </a>
-        </div>
-      );
-    } else {
-      return (
-        <div id="chosen-hike-placeholder"className="hike">
-          <h2>Choose a trail</h2>
-        </div>
-      )
-    }
   };
-
-  function addToState(newHike) {
-    setHikes(existingHikes => [...existingHikes, newHike]);
-    localStorage.setItem('hikes', JSON.stringify(hikes));
-    //Add hike to user's hike list
-    let newUserInfo = currentUser;
-    newUserInfo.hikes.push(Number(newHike.id));
-      //Update user in state and localStorage
-      const userIndex = appUsers.indexOf(currentUser);
-      let newUserList = [...appUsers];
-      setCurrentUser(newUserInfo);
-      localStorage.setItem("currentUser", JSON.stringify(newUserInfo));
-      newUserList[userIndex] = newUserInfo;
-      setAppUsers(newUserList);
-    }
 
   function handleSubmit(e) {
     let newHike = {};
     e.preventDefault();
-    const newId = hikes[hikes.length-1].id + 1;
+    const newId = hikes[hikes.length - 1].id + 1;
     let newAllTrailsId = -1;
     if (chosenHike) {
       newAllTrailsId = chosenHike.id;
@@ -73,8 +30,15 @@ function PostHike() {
     const newTime = e.target.time.value;
     const newLocation = e.target.location.value;
     const newComments = e.target.comments.value;
-    if (newAllTrailsId > -1 && newTitle && newDate && newTime && newLocation && newComments) {
-      newHike =   {
+    if (
+      newAllTrailsId > -1 &&
+      newTitle &&
+      newDate &&
+      newTime &&
+      newLocation &&
+      newComments
+    ) {
+      newHike = {
         id: newId,
         creator: currentUser.id,
         allTrailsId: newAllTrailsId,
@@ -82,14 +46,36 @@ function PostHike() {
         date: newDate,
         time: newTime,
         location: newLocation,
-        comments: newComments
+        comments: newComments,
       };
-      addToState(newHike);
+      addHikeToState(newHike);
       alert("Hike created");
       router.push("/bio");
     } else {
       alert("Please fill out all the information");
-    };
+    }
+  };
+
+  function addHikeToState(hikeInfo) {
+    //Add hike to hikes
+    setHikes((hikeList) => [...hikeList, hikeInfo]);
+    localStorage.setItem("hikes", JSON.stringify(hikes));
+    //Add hike to currentUser's hike list
+    let userInfo = currentUser;
+    userInfo.hikes.push(Number(hikeInfo.id));
+    //Update user
+    updateUser(userInfo);
+  }
+
+  function updateUser(userInfo) {
+    //Update currentUser
+    setCurrentUser(userInfo);
+    localStorage.setItem("currentUser", JSON.stringify(userInfo));
+    //Update userList
+    let userList = [...appUsers];
+    const userIndex = userList.findIndex((user) => user.id == userInfo.id);
+    userList[userIndex] = userInfo;
+    setAppUsers(userList);
   }
 
   return (
@@ -101,12 +87,20 @@ function PostHike() {
             <label htmlFor="area">Area: </label>
             <select name="area" id="area">
               <option value="Anywhere in WNC">Anywhere in WNC</option>
-              <option value="DuPont State Recreational Forest">DuPont State Recreational Forest</option>
-              <option value="Pisgah National Forest">Pisgah National Forest</option>
-              <option value="North Carolina Arboretum">North Carolina Arboretum</option>
+              <option value="DuPont State Recreational Forest">
+                DuPont State Recreational Forest
+              </option>
+              <option value="Pisgah National Forest">
+                Pisgah National Forest
+              </option>
+              <option value="North Carolina Arboretum">
+                North Carolina Arboretum
+              </option>
               <option value="Nantahala Forest">Nantahala Forest</option>
               <option value="Appalachian Trail">Appalachian Trail</option>
-              <option value="Mountains-to-Sea Trail">Mountains-to-Sea Trail</option>
+              <option value="Mountains-to-Sea Trail">
+                Mountains-to-Sea Trail
+              </option>
               <option value="Asheville Area">Asheville Area</option>
             </select>
             <br />
@@ -124,8 +118,7 @@ function PostHike() {
               <option value="moderate">Moderate</option>
               <option value="strenuous">Strenuous</option>
             </select>
-            <br/>
-            {/* <p>Keywords: </p> */}
+            <br />
             <input
               type="checkbox"
               name="waterfall"
@@ -143,7 +136,7 @@ function PostHike() {
             <button className="form-button">Search</button>
           </form>
           <h2>2. Select a trail from the right column</h2>
-          <ChosenHikeComponent />
+          <ChosenHike hikeSelected={chosenHike} />
           <h2>3. Fill out the hike information</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="hikeTitle">Title: </label>
@@ -151,7 +144,7 @@ function PostHike() {
             <br />
             <label htmlFor="date">Date: </label>
             <input type="date" name="date" id="date" />
-            <label htmlFor="time">  Time: </label>
+            <label htmlFor="time"> Time: </label>
             <input type="time" name="time" id="time" />
             <br />
             <label htmlFor="location"> Location: </label>
