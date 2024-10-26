@@ -3,6 +3,7 @@ import { useGlobal } from "../context/GlobalContext";
 import { useRouter } from "next/navigation";
 import allTrails from "@/app/assets/allTrails";
 import convertDate from "../assets/convertDate";
+import convertTime from "../assets/convertTime";
 
 function Hike({ hikeType, hikeInfo, cancelled }) {
   const { appUsers, setAppUsers, currentUser, setCurrentUser, setHike } =
@@ -25,6 +26,7 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
   );
   const hikeCreator = appUsers.find((user) => user.id == hikeInfo.creator);
   const hikingDate = convertDate(hikeInfo.date);
+  const hikingTime = convertTime(hikeInfo.time);
 
   function handleClick(e) {
     let newUserInfo = currentUser;
@@ -66,7 +68,7 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
       </h4>
       <h5>{allTrailsInfo.area}</h5>
       <h5>
-        {hikingDate}, {hikeInfo.time}, {hikeInfo.location}
+        {hikingDate}, {hikingTime}, {hikeInfo.location}
       </h5>
       <p>
         {allTrailsInfo.difficulty} * {allTrailsInfo.length} *{" "}
