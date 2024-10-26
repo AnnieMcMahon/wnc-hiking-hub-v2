@@ -82,6 +82,7 @@ function EditBio() {
             name="bio"
             id="newBio"
             value={bioInfo.bio || ""}
+            data-gramm="false"
             onChange={(e) => handleChange(e)}
           />
           <br />

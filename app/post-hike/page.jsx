@@ -149,7 +149,7 @@ function PostHike() {
             <br />
             <label htmlFor="comments">Comments: </label>
             <br />
-            <textarea type="textarea" name="comments" id="comments" />
+            <textarea type="textarea" name="comments" id="comments" data-gramm="false" />
             <br />
             <button type="submit" className="form-button">
               Submit Form

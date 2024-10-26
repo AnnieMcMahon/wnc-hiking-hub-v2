@@ -93,7 +93,7 @@ function updateHikes(hikeData) {
 
           <label htmlFor="newComments">Comments: </label>
           <br />
-          <textarea type="textarea" name="comments" id="newComments" value={hikeInfo.comments}
+          <textarea type="textarea" name="comments" id="newComments" value={hikeInfo.comments} data-gramm="false"
             onChange={(e) => handleChange(e)}/>
           <br />
           <button type="submit" className="form-button">
