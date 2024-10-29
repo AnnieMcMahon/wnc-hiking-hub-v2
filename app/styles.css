@@ -109,7 +109,7 @@ button:hover {
   cursor: pointer;
 }
 
-.button-link {
+button .button-link {
   text-decoration: none;
   color: inherit;
 }

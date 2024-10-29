@@ -1,7 +1,7 @@
 export default function convertDate(origDate) {
-  const hikeDate = new Date(origDate);
-  const yyyy = hikeDate.getFullYear();
-  let d = hikeDate.getDay();
+  const date = new Date(origDate);
+  const yyyy = date.getFullYear();
+  let d = date.getDay();
   let dddd = "";
   switch (d) {
     case 0:
@@ -26,11 +26,10 @@ export default function convertDate(origDate) {
       dddd = "Sat";
       break;
   }
-  let mm = hikeDate.getMonth() + 1; // Months start at 0!
-  let dd = hikeDate.getDate();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
   const formattedDate = dddd + ", " + mm + "/" + dd + "/" + yyyy;
-  console.log(formattedDate);
   return formattedDate;
 }
