@@ -10,10 +10,10 @@ export default function Navbar() {
   const { currentUser, setCurrentUser, appUsers } = useGlobal();
   const pathname = usePathname();
   const router = useRouter();
-  [buttonMessage, setButtonMessage] = useState(currentUser.id == 1 ? "Log In" : "Log Out");
+  const [buttonMessage, setButtonMessage] = useState(currentUser.id == 1 ? "Log In" : "Log Out");
 
   function handleClick() {
-    if (buttonMessage = "Log In") {
+    if (buttonMessage == "Log In") {
       setButtonMessage("Log Out");
       router.push("/login");
     } else {

@@ -17,13 +17,9 @@ function PostHike() {
   };
 
   function handleSubmit(e) {
-    let newHike = {};
-    e.preventDefault();
+    e.preventDefault();    
     const newId = hikes[hikes.length - 1].id + 1;
-    let newAllTrailsId = -1;
-    if (chosenHike) {
-      newAllTrailsId = chosenHike.id;
-    }
+    const newAllTrailsId = chosenHike ? chosenHike.id : -1;
     const newTitle = e.target.hikeTitle.value;
     const newDate = e.target.date.value;
     const newTime = e.target.time.value;
@@ -37,7 +33,7 @@ function PostHike() {
       newLocation &&
       newComments
     ) {
-      newHike = {
+      const newHike = {
         id: newId,
         creator: currentUser.id,
         allTrailsId: newAllTrailsId,
@@ -47,33 +43,20 @@ function PostHike() {
         location: newLocation,
         comments: newComments,
       };
-      addHikeToState(newHike);
-      alert("Hike created");
+      setHikes(prevHikes => [...prevHikes, newHike]);
+      setCurrentUser(prevUser => ({
+        ...prevUser,
+        hikes: [...prevUser.hikes, newHike.id]
+      }));
+      setAppUsers(prevAppUsers => 
+        prevAppUsers.map(user => user.id === currentUser.id ? { ...user, hikes: [...user.hikes, newHike.id] } : user)
+      );
+
       router.push("/bio");
     } else {
       alert("Please fill out all the information");
     }
   };
-
-  function addHikeToState(hikeInfo) {
-    //Add hike to hikes
-    setHikes((hikeList) => [...hikeList, hikeInfo]);
-    //Add hike to currentUser's hike list
-    let userInfo = currentUser;
-    userInfo.hikes.push(Number(hikeInfo.id));
-    //Update user
-    updateUser(userInfo);
-  }
-
-  function updateUser(userInfo) {
-    //Update currentUser
-    setCurrentUser(userInfo);
-    //Update userList
-    let userList = [...appUsers];
-    const userIndex = userList.findIndex((user) => user.id == userInfo.id);
-    userList[userIndex] = userInfo;
-    setAppUsers(userList);
-  }
 
   return (
     <div id="post-hike">
