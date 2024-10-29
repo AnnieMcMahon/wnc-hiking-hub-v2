@@ -51,7 +51,6 @@ function PostHike() {
       setAppUsers(prevAppUsers => 
         prevAppUsers.map(user => user.id === currentUser.id ? { ...user, hikes: [...user.hikes, newHike.id] } : user)
       );
-
       router.push("/bio");
     } else {
       alert("Please fill out all the information");

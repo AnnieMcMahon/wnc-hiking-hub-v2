@@ -3,19 +3,28 @@ import "./login.css";
 import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
 import { useState } from "react";
+import Modal from "../components/Modal";
 
 function Login() {
   const router = useRouter();
   const { setCurrentUser, appUsers, setAppUsers } = useGlobal();
-  const [errorMessage, setErrorMessage] = useState("");
+  const [modal, setModal] = useState({ isOpen: false, title: "", message: "", onConfirm: null });
+
+  function showModal(title, message, onConfirm = null) {
+    setModal({ isOpen: true, title, message, onConfirm });
+  }
+
+  function closeModal() {
+    setModal({ isOpen: false, title: "", message: "", onConfirm: null });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     const userEmail = e.target.userEmail.value.trim();
     const userPassword = e.target.userPassword.value;
-
+    
     if (!userEmail || !userPassword) {
-      setErrorMessage("E-mail and/or password missing");
+      showModal("Error", "E-mail and/or password missing");
       return;
     }
 
@@ -25,15 +34,18 @@ function Login() {
         setCurrentUser(userInfo);
         router.push("/bio");
       } else {
-        setErrorMessage("Invalid password. Please try again.");
+        showModal("Error", "Invalid password. Please try again.");
       }
     } else {
-      handleNewAccount(userEmail, userPassword);
+      showModal(
+        "Create Account",
+        "No account found. Would you like to create one?",
+        () => handleNewAccount(userEmail, userPassword)
+      );
     }
-  }
+  };
 
   function handleNewAccount(email, password) {
-    if (confirm("No account found. Would you like to create one?")) {
       const newUserId = appUsers[appUsers.length - 1]?.id + 1 || 1;
       const newUser = {
         id: newUserId,
@@ -46,9 +58,9 @@ function Login() {
       };
       setAppUsers((existingUsers) => [...existingUsers, newUser]);
       setCurrentUser(newUser);
+      closeModal();
       router.push("/bio");
     }
-  }
 
   return (
     <div id="login">
@@ -69,8 +81,14 @@ function Login() {
           <button type="submit" className="form-button">
             Log In
           </button>
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
+        <Modal
+          isOpen={modal.isOpen}
+          title={modal.title}
+          message={modal.message}
+          onConfirm={modal.onConfirm}
+          onClose={closeModal}
+        />
       </div>
     </div>
   );

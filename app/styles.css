@@ -123,7 +123,7 @@ button .button-link {
   float: right;
 }
 
-/* Post a Hike page form section buttons */
+/* Used by PostHike and EditBio pages */
 .form-button {
   margin: 0.1rem;
   font-size: 0.7rem;
