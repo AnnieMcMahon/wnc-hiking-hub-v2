@@ -58,7 +58,7 @@ p {
   font-size: 0.8rem;
 }
 
-/* Bio form */
+/* Forms */
 form {
   font-size: 0.8rem;
 }
@@ -86,13 +86,7 @@ a {
   font-size: 0.8rem;
 }
 
-/*Hike sections*/
-.hike p,
-.hike h4,
-.hike h5 {
-  margin: 0;
-  padding: 0;
-}
+
 
 /**** Buttons ****/
 button {
@@ -159,92 +153,79 @@ button .button-link {
   border-radius: 5px;
 }
 
-/**** Home page and components ****/
-
-/* Home Page */
+/**** Home page ****/
 #home {
   width: 40%;
   margin: 1rem auto;
   padding: 1rem 2rem;
 }
 
-/* Hike component */
-.hike {
-  text-align: left;
-  background-color: #d9d9d9;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-}
-
-#AllTrailsPost:hover {
-    background-color: #14af5d;
-    cursor: pointer;
-}
-
 /**** Smaller screens ****/
 @media only screen and (max-width: 768px) {
+  
+  /**** Home page ****/
   #home {
     width: 95%;
     margin: 1rem auto;
     padding: 0.1rem;
   }
 
-/**** Fonts ****/
-/* Home page title, Bio name */
+  /**** Fonts ****/
+  /* Home page title, Bio name */
   h1 {
     font-size: 1rem;
   }
-  
+
   /* Each page's titles */
   h2 {
     font-size: 0.8rem;
   }
-  
+
   /* Join Hike title */
   h3 {
     font-size: 0.8rem;
     margin: 0.5rem;
   }
-  
+
   /* Hike sections */
   h4 {
     font-size: 0.6rem;
   }
-  
+
   h5 {
     font-size: 0.6rem;
   }
-  
+
   /* Bio text */
   p {
     font-size: 0.8rem;
   }
-  
+
   /* Home page last sentence */
   #home p {
     font-size: 1rem;
   }
-  
+
   /* Hike section */
   .hike p {
     font-size: 0.6rem;
   }
-  
+
   /* Post a Hike form */
   form {
     font-size: 0.6rem;
   }
-  
+
   label {
     font-size: 0.7rem;
   }
-  
+
   /* Home page instructions */
   li {
     font-size: 1rem;
     padding: 0.2rem;
   }
-  
+
   /* Hike section links */
   a {
     font-size: 0.6rem;
@@ -257,38 +238,36 @@ button .button-link {
     padding: 0.3rem 1rem;
   }
 
-/*Hike section buttons */
-.hike-button {
-  margin: 0.1rem;
-  font-size: 0.5rem;
-  padding: 0.1rem;
-  width: 3rem;
-}
+  /*Hike section buttons */
+  .hike-button {
+    margin: 0.1rem;
+    font-size: 0.5rem;
+    padding: 0.1rem;
+    width: 3rem;
+  }
 
-/* Post a Hike page form section buttons */
-.form-button {
-  margin: 0.1rem;
-  font-size: 0.6rem;
-  padding: 0.2rem;
-  width: 6rem;
-}
+  /* Post a Hike page form section buttons */
+  .form-button {
+    margin: 0.1rem;
+    font-size: 0.6rem;
+    padding: 0.2rem;
+    width: 6rem;
+  }
 
-/**** General sections ****/
+  /**** General sections ****/
+  /* Hike Sections on Bio, Join Hike and Post Hike pages */
+  .hike-section {
+    height: auto;
+    margin: 0.1rem;
+    padding: 0 0.3rem;
+    margin-left: 0.1rem;
+  }
 
-/* Hike Sections on Bio, Join Hike and Post Hike pages */
-.hike-section {
-  height: auto;
-  margin: 0.1rem;
-  padding: 0 0.3rem;
-  margin-left: 0.1rem;
-}
-
-/* Home page, Bio, Post Hike */
-.text-box {
-  background: whitesmoke;
-  opacity: 75%;
-  border: 1px solid green;
-  border-radius: 5px;
-}
-
+  /* Home page, Bio, Post Hike */
+  .text-box {
+    background: whitesmoke;
+    opacity: 75%;
+    border: 1px solid green;
+    border-radius: 5px;
+  }
 }
