@@ -1,23 +1,45 @@
 "use client";
-import AllTrailsPost from "../components/AllTrailsPost";
-import ChosenHike from "../components/ChosenHike";
-import allTrails from "../assets/allTrails";
 import { useState } from "react";
 import { useGlobal } from "../context/GlobalContext";
 import { useRouter } from "next/navigation";
+import AllTrailsPost from "../components/AllTrailsPost";
+import ChosenHike from "../components/ChosenHike";
+import allTrails from "../assets/allTrails";
+import Modal from "../components/Modal";
 import "./post-hike.css";
 
 function PostHike() {
-  const { hikes, setHikes, currentUser, setCurrentUser, appUsers, setAppUsers } = useGlobal();
+  const {
+    hikes,
+    setHikes,
+    currentUser,
+    setCurrentUser,
+    setAppUsers,
+  } = useGlobal();
   const router = useRouter();
   const [chosenHike, setChosenHike] = useState(null);
 
+  const [modal, setModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    onConfirm: null,
+  });
+
+  function showModal(title, message, onConfirm = null) {
+    setModal({ isOpen: true, title, message, onConfirm });
+  }
+
+  function closeModal() {
+    setModal({ isOpen: false, title: "", message: "", onConfirm: null });
+  }
+
   function handleClick(trail) {
     setChosenHike(trail);
-  };
+  }
 
   function handleSubmit(e) {
-    e.preventDefault();    
+    e.preventDefault();
     const newId = hikes[hikes.length - 1].id + 1;
     const newAllTrailsId = chosenHike ? chosenHike.id : -1;
     const newTitle = e.target.hikeTitle.value;
@@ -43,19 +65,23 @@ function PostHike() {
         location: newLocation,
         comments: newComments,
       };
-      setHikes(prevHikes => [...prevHikes, newHike]);
-      setCurrentUser(prevUser => ({
+      setHikes((prevHikes) => [...prevHikes, newHike]);
+      setCurrentUser((prevUser) => ({
         ...prevUser,
-        hikes: [...prevUser.hikes, newHike.id]
+        hikes: [...prevUser.hikes, newHike.id],
       }));
-      setAppUsers(prevAppUsers => 
-        prevAppUsers.map(user => user.id === currentUser.id ? { ...user, hikes: [...user.hikes, newHike.id] } : user)
+      setAppUsers((prevAppUsers) =>
+        prevAppUsers.map((user) =>
+          user.id === currentUser.id
+            ? { ...user, hikes: [...user.hikes, newHike.id] }
+            : user
+        )
       );
       router.push("/bio");
     } else {
-      alert("Please fill out all the information");
+      showModal("Error", "Please fill out all the information");
     }
-  };
+  }
 
   return (
     <div id="post-hike">
@@ -131,11 +157,23 @@ function PostHike() {
             <br />
             <label htmlFor="comments">Comments: </label>
             <br />
-            <textarea type="textarea" name="comments" id="comments" data-gramm="false" />
+            <textarea
+              type="textarea"
+              name="comments"
+              id="comments"
+              data-gramm="false"
+            />
             <br />
             <button type="submit" className="form-button">
               Submit Form
             </button>
+            <Modal
+              isOpen={modal.isOpen}
+              title={modal.title}
+              message={modal.message}
+              onConfirm={modal.onConfirm}
+              onClose={closeModal}
+            />
           </form>
         </div>
         <div className="hike-section">

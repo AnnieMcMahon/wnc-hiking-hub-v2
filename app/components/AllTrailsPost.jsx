@@ -1,4 +1,6 @@
 "use client";
+import "./AllTrailsPost.css";
+import "./Hike.css";
 
 function AllTrailsPost({hikeInfo, onClick}) {
   return (

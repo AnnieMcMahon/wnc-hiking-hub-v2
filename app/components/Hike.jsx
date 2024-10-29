@@ -35,13 +35,11 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
       case "Join Hike":
         newUserInfo.hikes.push(Number(e.target.name));
         updateUser(newUserInfo);
-        alert("Hike added to your hiking list.");
         break;
       case "Opt Out":
         const index = newUserInfo.hikes.indexOf(Number(e.target.name));
         newUserInfo.hikes.splice(index, 1);
         updateUser(newUserInfo);
-        alert("Hike removed from your hiking list.");
         break;
       case "Edit Hike":
         setHike(e.target.name);
@@ -53,9 +51,7 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
   }
 
   function updateUser(userInfo) {
-    //Update currentUser
     setCurrentUser(userInfo);
-    //Update userList
     let userList = [...appUsers];
     const userIndex = userList.findIndex((user) => user.id == userInfo.id);
     userList[userIndex] = userInfo;
