@@ -2,53 +2,52 @@
 import "./login.css";
 import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
+import { useState } from "react";
 
 function Login() {
   const router = useRouter();
   const { setCurrentUser, appUsers, setAppUsers } = useGlobal();
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    const userEmail = e.target.userEmail.value;
+    const userEmail = e.target.userEmail.value.trim();
     const userPassword = e.target.userPassword.value;
-    let userStatus = "";
-    if (userEmail.length > 0 && userPassword.length > 0) {
-      const userInfo = appUsers.find((user) => user.email == userEmail);
-      if (userInfo) {
-        if (userInfo.password == userPassword) {
-          setCurrentUser(userInfo);
-          router.push("/bio");
-        } else {
-          userStatus = "password";
-          alert("Please enter a valid password");
-        }
+
+    if (!userEmail || !userPassword) {
+      setErrorMessage("E-mail and/or password missing");
+      return;
+    }
+
+    const userInfo = appUsers.find((user) => user.email === userEmail);
+    if (userInfo) {
+      if (userInfo.password === userPassword) {
+        setCurrentUser(userInfo);
+        router.push("/bio");
       } else {
-        userStatus = "new";
-        if (confirm("Create new account?")) {
-          createNewAccount(userEmail, userPassword);
-        }
+        setErrorMessage("Invalid password. Please try again.");
       }
     } else {
-      alert("E-mail and/or password missing");
+      handleNewAccount(userEmail, userPassword);
     }
   }
 
-  function createNewAccount(newUserEmail, newUserPassword) {
-    const newUserId = appUsers[(appUsers.length - 1)].id + 1;
-    const newUserName = "Avid Hiker #" + newUserId;
-    const newUser = {
-      id: newUserId,
-      email: newUserEmail,
-      password: newUserPassword,
-      name: newUserName,
-      avatar: "/newUser.png",
-      bio: "Enter your bio description here",
-      hikes: [],
-    };
-    setAppUsers(existingUsers => [...existingUsers, newUser]);
-    setCurrentUser(newUser);
-    alert("Account created successfully!");
-    router.push("/bio");
+  function handleNewAccount(email, password) {
+    if (confirm("No account found. Would you like to create one?")) {
+      const newUserId = appUsers[appUsers.length - 1]?.id + 1 || 1;
+      const newUser = {
+        id: newUserId,
+        email,
+        password,
+        name: `Avid Hiker #${newUserId}`,
+        avatar: "/newUser.png",
+        bio: "Enter your bio description here",
+        hikes: [],
+      };
+      setAppUsers((existingUsers) => [...existingUsers, newUser]);
+      setCurrentUser(newUser);
+      router.push("/bio");
+    }
   }
 
   return (
@@ -70,6 +69,7 @@ function Login() {
           <button type="submit" className="form-button">
             Log In
           </button>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </form>
       </div>
     </div>
