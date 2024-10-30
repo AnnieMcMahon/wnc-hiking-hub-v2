@@ -8,8 +8,8 @@ function ChosenHike({ hikeSelected }) {
           <h4>{hikeSelected.name}</h4>
           <p>{hikeSelected.area}</p>
           <p>
-            {hikeSelected.difficulty} * {hikeSelected.length} *{" "}
-            {hikeSelected.elevation} * {hikeSelected.type}
+            {hikeSelected.difficulty} * {hikeSelected.length} mi *{" "}
+            {hikeSelected.elevation} ft * {hikeSelected.type}
           </p>
           <a
             href={hikeSelected.link}

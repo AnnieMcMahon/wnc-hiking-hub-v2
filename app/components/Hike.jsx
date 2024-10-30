@@ -67,8 +67,8 @@ function Hike({ hikeType, hikeInfo, cancelled }) {
         {hikingDate}, {hikingTime}, {hikeInfo.location}
       </h5>
       <p>
-        {allTrailsInfo.difficulty} * {allTrailsInfo.length} *{" "}
-        {allTrailsInfo.elevation} * {allTrailsInfo.type}
+        {allTrailsInfo.difficulty} * {allTrailsInfo.length} mi *{" "}
+        {allTrailsInfo.elevation} ft * {allTrailsInfo.type}
       </p>
       <p>{hikeInfo.comments}</p>
       <a href={allTrailsInfo.link} target="_blank">
