@@ -11,6 +11,27 @@ export function GlobalProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(sampleAppUsers[0]);
   const [hikes, setHikes] = useState(sampleHikes);
   const [hike, setHike] = useState(sampleHikes[0]);
+  const [modal, setModal] = useState({
+    isOpen: false,
+    onConfirm: null,
+    title: "",
+    message: "",
+    onClose: null
+  });
+
+  function showModal(title, message, onConfirm = null, onClose = null) {
+    setModal({ 
+      isOpen: true, 
+      title: title, 
+      message: message, 
+      onConfirm: onConfirm, 
+      onClose: onClose || closeModal
+     });
+  }
+
+  function closeModal() {
+    setModal({ isOpen: false, title: "", message: "", onConfirm: null, onClose: null });
+  }
 
   useEffect(() => {
     // const storedUsers = JSON.parse(localStorage.getItem("appUsers"));
@@ -50,7 +71,11 @@ export function GlobalProvider({ children }) {
         hikes,
         setHikes,
         hike,
-        setHike
+        setHike,
+        modal,
+        setModal,
+        showModal,
+        closeModal
       }}
     >
       {children}

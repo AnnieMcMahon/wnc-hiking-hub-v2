@@ -1,22 +1,24 @@
 import React from "react";
 import "./Modal.css";
+import { useGlobal } from "../context/GlobalContext";
 
-function Modal({ isOpen, title, message, onConfirm, onClose }) {
-  if (!isOpen) return null;
+function Modal() {
+  const { modal } = useGlobal();
+  if (!modal.isOpen) return null;
 
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <h2>{title}</h2>
-        <p>{message}</p>
+        <h2>{modal.title}</h2>
+        <p>{modal.message}</p>
         <div className="modal-buttons">
-          {onConfirm && (
-            <button onClick={onConfirm} className="modal-confirm">
+          {modal.onConfirm && (
+            <button onClick={modal.onConfirm} className="modal-confirm">
               OK
             </button>
           )}
-          <button onClick={onClose} className="modal-close">
-            {onConfirm ? "Cancel" : "Close"}
+          <button onClick={modal.onClose} className="modal-close">
+            {modal.onConfirm ? "Cancel" : "Close"}
           </button>
         </div>
       </div>

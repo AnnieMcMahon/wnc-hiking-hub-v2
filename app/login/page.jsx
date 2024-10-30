@@ -2,21 +2,11 @@
 import "./login.css";
 import { useRouter } from "next/navigation";
 import { useGlobal } from "../context/GlobalContext";
-import { useState } from "react";
 import Modal from "../components/Modal";
 
 function Login() {
   const router = useRouter();
-  const { setCurrentUser, appUsers, setAppUsers } = useGlobal();
-  const [modal, setModal] = useState({ isOpen: false, title: "", message: "", onConfirm: null });
-
-  function showModal(title, message, onConfirm = null) {
-    setModal({ isOpen: true, title, message, onConfirm });
-  }
-
-  function closeModal() {
-    setModal({ isOpen: false, title: "", message: "", onConfirm: null });
-  }
+  const { setCurrentUser, appUsers, setAppUsers, showModal, closeModal } = useGlobal();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -82,13 +72,7 @@ function Login() {
             Log In
           </button>
         </form>
-        <Modal
-          isOpen={modal.isOpen}
-          title={modal.title}
-          message={modal.message}
-          onConfirm={modal.onConfirm}
-          onClose={closeModal}
-        />
+        <Modal />
       </div>
     </div>
   );

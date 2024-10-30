@@ -25,7 +25,6 @@ export default function Navbar() {
       router.push("/login");
     } else {
       setCurrentUser(appUsers[0]);
-      localStorage.setItem("currentUser", JSON.stringify(appUsers[0]));
       router.push("/");
     }
   }

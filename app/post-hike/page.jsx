@@ -15,24 +15,10 @@ function PostHike() {
     currentUser,
     setCurrentUser,
     setAppUsers,
+    showModal
   } = useGlobal();
   const router = useRouter();
   const [chosenHike, setChosenHike] = useState(null);
-
-  const [modal, setModal] = useState({
-    isOpen: false,
-    title: "",
-    message: "",
-    onConfirm: null,
-  });
-
-  function showModal(title, message, onConfirm = null) {
-    setModal({ isOpen: true, title, message, onConfirm });
-  }
-
-  function closeModal() {
-    setModal({ isOpen: false, title: "", message: "", onConfirm: null });
-  }
 
   function handleClick(trail) {
     setChosenHike(trail);
@@ -167,13 +153,7 @@ function PostHike() {
             <button type="submit" className="form-button">
               Submit Form
             </button>
-            <Modal
-              isOpen={modal.isOpen}
-              title={modal.title}
-              message={modal.message}
-              onConfirm={modal.onConfirm}
-              onClose={closeModal}
-            />
+            <Modal />
           </form>
         </div>
         <div className="hike-section">
