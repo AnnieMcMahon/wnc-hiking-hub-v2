@@ -175,6 +175,11 @@ button .button-link {
   line-height: 1rem;
 }
 
+#AllTrailsPost:hover {
+  background-color: #14af5d;
+  cursor: pointer;
+}
+
 /**** Smaller screens ****/
 @media only screen and (max-width: 768px) {
   

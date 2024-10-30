@@ -15,10 +15,46 @@ function PostHike() {
     currentUser,
     setCurrentUser,
     setAppUsers,
-    showModal
+    showModal,
   } = useGlobal();
   const router = useRouter();
   const [chosenHike, setChosenHike] = useState(null);
+  const [filteredList, setFilteredList] = useState(allTrails);
+  const [searchArea, setSearchArea] = useState("Anywhere in WNC");
+  const [searchDifficulty, setSearchDifficulty] = useState("Any");
+  const [searchLength, setSearchLength] = useState("Any length");
+
+  function searchByArea(e) {
+    setSearchArea(e.target.value);
+    filterTrailList(e.target.value, searchDifficulty, searchLength);
+  }
+
+  function searchByDifficulty(e) {
+    setSearchDifficulty(e.target.value);
+    filterTrailList(searchArea, e.target.value, searchLength);
+  };
+
+  function searchByLength(e) {
+    setSearchLength(e.target.value);
+    filterTrailList(searchArea, searchDifficulty, e.target.value);
+  };
+
+  function filterTrailList(area, difficulty, length) {
+    let newList = allTrails;
+    if (area !== "Anywhere in WNC") {
+      newList = newList.filter(trail => trail.area == area)
+    }
+    if (difficulty !== "Any") {
+      newList = newList.filter(trail => trail.difficulty == difficulty)
+    }
+    if (length !== "Any length") {
+      newList = newList.filter(trail => 
+        (length == "Short" && Number(trail.length) < 3) ||
+        (length == "Long" && Number(trail.length > 6)) ||
+          (length == "Medium" && Number(trail.length) >=3 && Number(trail.length) <= 6))
+    }
+    setFilteredList(newList);
+  }
 
   function handleClick(trail) {
     setChosenHike(trail);
@@ -76,7 +112,7 @@ function PostHike() {
           <h2>1. Search for a trail</h2>
           <form>
             <label htmlFor="area">Area: </label>
-            <select name="area" id="area">
+            <select name="area" id="area" onChange={(e) => searchByArea(e)}>
               <option value="Anywhere in WNC">Anywhere in WNC</option>
               <option value="DuPont State Recreational Forest">
                 DuPont State Recreational Forest
@@ -88,46 +124,30 @@ function PostHike() {
                 North Carolina Arboretum
               </option>
               <option value="Nantahala Forest">Nantahala Forest</option>
-              <option value="Appalachian Trail">Appalachian Trail</option>
-              <option value="Mountains-to-Sea Trail">
-                Mountains-to-Sea Trail
-              </option>
-              <option value="Asheville Area">Asheville Area</option>
             </select>
             <br />
-            <label htmlFor="length">Length: </label>
-            <select name="length" id="length">
-              <option value="any">Any length</option>
-              <option value="short">Shorter than 3 miles</option>
-              <option value="medium">From 3 to 6 miles</option>
-              <option value="long">Longer than 6 miles</option>
+            <label htmlFor="difficulty">Difficulty: </label>
+            <select
+              name="difficulty"
+              id="difficulty"
+              onChange={(e) => searchByDifficulty(e)}
+            >
+              <option value="Any">Any</option>
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Strenuous">Strenuous</option>
             </select>
-            <label htmlFor="difficulty"> Difficulty: </label>
-            <select name="difficulty" id="difficulty">
-              <option value="any">Any</option>
-              <option value="easy">Easy</option>
-              <option value="moderate">Moderate</option>
-              <option value="strenuous">Strenuous</option>
+            <label htmlFor="length"> Length: </label>
+            <select name="length" id="length" onChange={(e) => searchByLength(e)}>
+              <option value="Any length">Any length</option>
+              <option value="Short">Shorter than 3 miles</option>
+              <option value="Medium">From 3 to 6 miles</option>
+              <option value="Long">Longer than 6 miles</option>
             </select>
             <br />
-            <input
-              type="checkbox"
-              name="waterfall"
-              value="waterfall"
-              id="waterfall"
-            />
-            <label htmlFor="waterfall">Waterfall</label>
-            <input type="checkbox" name="view" value="view" id="view" />
-            <label htmlFor="view">View</label>
-            <input type="checkbox" name="paved" value="paved" id="paved" />
-            <label htmlFor="paved">Paved</label>
-            <input type="checkbox" name="dogs" value="dogs" id="dogs" />
-            <label htmlFor="dogs">Dogs</label>
-            <br />
-            <button className="form-button">Search</button>
           </form>
           <h2>2. Select a trail from the right column</h2>
-            <ChosenHike hikeSelected={chosenHike} />
+          <ChosenHike hikeSelected={chosenHike} />
           <h2>3. Fill out the hike information</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="hikeTitle">Title: </label>
@@ -158,7 +178,7 @@ function PostHike() {
         </div>
         <div className="hike-section">
           <h2>Trail Search Results</h2>
-          {allTrails.map((trail) => (
+          {filteredList.map((trail) => (
             <AllTrailsPost
               hikeInfo={trail}
               key={trail.id}
