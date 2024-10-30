@@ -131,7 +131,6 @@ button .button-link {
 }
 
 /**** General sections ****/
-
 /* Hike Sections on Bio, Join Hike and Post Hike pages */
 .hike-section {
   width: 40%;
@@ -153,11 +152,27 @@ button .button-link {
   border-radius: 5px;
 }
 
-/**** Home page ****/
+/* Home page */
 #home {
   width: 40%;
   margin: 1rem auto;
   padding: 1rem 2rem;
+}
+
+/* Hikes */
+.hike {
+  text-align: left;
+  background-color: #d9d9d9;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.hike p,
+.hike h4,
+.hike h5 {
+  margin: 0;
+  padding: 0;
+  line-height: 1rem;
 }
 
 /**** Smaller screens ****/

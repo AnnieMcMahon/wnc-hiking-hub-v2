@@ -1,7 +1,6 @@
 "use client";
 import { useGlobal } from "../context/GlobalContext";
 import { useRouter } from "next/navigation";
-import "./Hike.css";
 import allTrails from "@/app/assets/allTrails";
 import convertDate from "../assets/convertDate";
 import convertTime from "../assets/convertTime";

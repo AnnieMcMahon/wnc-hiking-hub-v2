@@ -36,9 +36,16 @@
   height: 4rem;
 }
 
-#post-hike #chosen-hike, #post-hike #chosen-hike-placeholder {
+#chosen-hike, #chosen-hike-placeholder {
+  line-height: 1rem;
   width: 90%;
 }
+
+#chosen-hike {
+  margin: 0.5rem;
+  padding: 0.2rem 1rem;
+}
+
 
 @media only screen and (max-width: 768px) {
   #post-hike #form-area {

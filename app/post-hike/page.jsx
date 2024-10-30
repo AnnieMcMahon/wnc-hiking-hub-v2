@@ -141,7 +141,7 @@ function PostHike() {
             <button className="form-button">Search</button>
           </form>
           <h2>2. Select a trail from the right column</h2>
-          <ChosenHike hikeSelected={chosenHike} />
+            <ChosenHike hikeSelected={chosenHike} />
           <h2>3. Fill out the hike information</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="hikeTitle">Title: </label>
