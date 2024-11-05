@@ -1,6 +1,6 @@
 "use client";
 
-import { useGlobal } from "./context/GlobalContext";
+import { useGlobal } from "../context/GlobalContext";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
